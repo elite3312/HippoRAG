@@ -1,397 +1,67 @@
-<h1 align="center">HippoRAG 2: From RAG to Memory</h1>
-<p align="center">
-    <img src="https://github.com/OSU-NLP-Group/HippoRAG/raw/main/images/hippo_brain.png" width="55%" style="max-width: 300px;">
-</p>
+# hipporag
 
-[<img align="center" src="https://colab.research.google.com/assets/colab-badge.svg" />](https://colab.research.google.com/drive/1nuelysWsXL8F5xH6q4JYJI8mvtlmeM9O#scrollTo=TjHdNe2KC81K)
-
-[<img align="center" src="https://img.shields.io/badge/arXiv-2502.14802 HippoRAG 2-b31b1b" />](https://arxiv.org/abs/2502.14802)
-[<img align="center" src="https://img.shields.io/badge/🤗 Dataset-HippoRAG 2-yellow" />](https://huggingface.co/datasets/osunlp/HippoRAG_2/tree/main)
-[<img align="center" src="https://img.shields.io/badge/arXiv-2405.14831 HippoRAG 1-b31b1b" />](https://arxiv.org/abs/2405.14831)
-[<img align="center" src="https://img.shields.io/badge/GitHub-HippoRAG 1-blue" />](https://github.com/OSU-NLP-Group/HippoRAG/tree/legacy)
-[<img align="center" src="https://discord.com/api/guilds/1344074245705302206/widget.png?style=shield" />](https://discord.gg/fh58dH6k)
-
-### HippoRAG 2 is a powerful memory framework for LLMs that enhances their ability to recognize and utilize connections in new knowledge—mirroring a key function of human long-term memory.
-
-Our experiments show that HippoRAG 2 improves associativity (multi-hop retrieval) and sense-making (the process of integrating large and complex contexts) in even the most advanced RAG systems, without sacrificing their performance on simpler tasks.
-
-Like its predecessor, HippoRAG 2 remains cost and latency efficient in online processes, while using significantly fewer resources for offline indexing compared to other graph-based solutions such as GraphRAG, RAPTOR, and LightRAG.
-
-<p align="center">
-  <img align="center" src="https://github.com/OSU-NLP-Group/HippoRAG/raw/main/images/intro.png" />
-</p>
-<p align="center">
-  <b>Figure 1:</b> Evaluation of continual learning capabilities across three key dimensions: factual memory (NaturalQuestions, PopQA), sense-making (NarrativeQA), and associativity (MuSiQue, 2Wiki, HotpotQA, and LV-Eval). HippoRAG 2 surpasses other methods across all
-categories, bringing it one step closer to true long-term memory.
-</p>
-
-<p align="center">
-  <img align="center" src="https://github.com/OSU-NLP-Group/HippoRAG/raw/main/images/methodology.png" />
-</p>
-<p align="center">
-  <b>Figure 2:</b> HippoRAG 2 methodology.
-</p>
-
-#### Check out our papers to learn more:
-
-* [**HippoRAG: Neurobiologically Inspired Long-Term Memory for Large Language Models**](https://arxiv.org/abs/2405.14831) [NeurIPS '24].
-* [**From RAG to Memory: Non-Parametric Continual Learning for Large Language Models**](https://arxiv.org/abs/2502.14802) [Under Review].
-
-----
-
-## Installation
+## install
 
 ```sh
-conda create -n hipporag python=3.10
+#conda bin is at:
+#/home/perry/miniconda3/bin
+
+conda create -n hipporag python=3.10 # create a venv called hipporag
 conda activate hipporag
 pip install hipporag
 ```
-Initialize the environmental variables and activate the environment:
 
+## running experiments
+
+- set environment variables
+  
 ```sh
-export CUDA_VISIBLE_DEVICES=0,1,2,3
-export HF_HOME=<path to Huggingface home directory>
-export OPENAI_API_KEY=<your openai api key>   # if you want to use OpenAI model
-
+export CUDA_VISIBLE_DEVICES=0,1,2,3 # change according to how many gpus you have
+#export HF_HOME=<path to Huggingface home directory>
+export OPENAI_API_KEY=<open ai key>   # if you want to use OpenAI model
 conda activate hipporag
 ```
 
-## Quick Start
+- run example.py
 
-### OpenAI Models
-
-This simple example will illustrate how to use `hipporag` with any OpenAI model:
-
-```python
-from hipporag import HippoRAG
-
-# Prepare datasets and evaluation
-docs = [
-    "Oliver Badman is a politician.",
-    "George Rankin is a politician.",
-    "Thomas Marwick is a politician.",
-    "Cinderella attended the royal ball.",
-    "The prince used the lost glass slipper to search the kingdom.",
-    "When the slipper fit perfectly, Cinderella was reunited with the prince.",
-    "Erik Hort's birthplace is Montebello.",
-    "Marina is bom in Minsk.",
-    "Montebello is a part of Rockland County."
-]
-
-save_dir = 'outputs'# Define save directory for HippoRAG objects (each LLM/Embedding model combination will create a new subdirectory)
-llm_model_name = 'gpt-4o-mini' # Any OpenAI model name
-embedding_model_name = 'nvidia/NV-Embed-v2'# Embedding model name (NV-Embed, GritLM or Contriever for now)
-
-#Startup a HippoRAG instance
-hipporag = HippoRAG(save_dir=save_dir, 
-                    llm_model_name=llm_model_name,
-                    embedding_model_name=embedding_model_name) 
-
-#Run indexing
-hipporag.index(docs=docs)
-
-#Separate Retrieval & QA
-queries = [
-    "What is George Rankin's occupation?",
-    "How did Cinderella reach her happy ending?",
-    "What county is Erik Hort's birthplace a part of?"
-]
-
-retrieval_results = hipporag.retrieve(queries=queries, num_to_retrieve=2)
-qa_results = hipporag.rag_qa(retrieval_results)
-
-#Combined Retrieval & QA
-rag_results = hipporag.rag_qa(queries=queries)
-
-#For Evaluation
-answers = [
-    ["Politician"],
-    ["By going to the ball."],
-    ["Rockland County"]
-]
-
-gold_docs = [
-    ["George Rankin is a politician."],
-    ["Cinderella attended the royal ball.",
-    "The prince used the lost glass slipper to search the kingdom.",
-    "When the slipper fit perfectly, Cinderella was reunited with the prince."],
-    ["Erik Hort's birthplace is Montebello.",
-    "Montebello is a part of Rockland County."]
-]
-
-rag_results = hipporag.rag_qa(queries=queries, 
-                              gold_docs=gold_docs,
-                              gold_answers=answers)
+```txt
+(hipporag) (base) perry@DESKTOP-LGGEMNE:~/nlp2025/rag_aura_gang$ /home/perry/miniconda3/envs/hipporag/bin/python /home/perry/nlp2025/rag_aura_gang/example.py
+Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████████████████████| 4/4 [00:04<00:00,  1.21s/it]
+Some parameters are on the meta device because they were offloaded to the disk and cpu.
+9it [00:00, 241979.08it/s]
+9it [00:00, 618831.74it/s]
+/home/perry/.cache/huggingface/modules/transformers_modules/nvidia/NV-Embed-v2/c50d55f43bde7e6a18e0eaa15a62fd63a930f1a1/modeling_nvembed.py:349: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  'input_ids': torch.tensor(batch_dict.get('input_ids').to(batch_dict.get('input_ids')).long()),
+/home/perry/miniconda3/envs/hipporag/lib/python3.10/contextlib.py:103: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
+  self.gen = func(*args, **kwds)
+Retrieving: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00,  4.79it/s]
+Collecting QA prompts: 100%|██████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 472.74it/s]
+QA Reading: 100%|████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 1310.86it/s]
+Extraction Answers from LLM Response: 3it [00:00, 40201.00it/s]
+Retrieving: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 639.51it/s]
+Collecting QA prompts: 100%|████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 45756.04it/s]
+QA Reading: 100%|████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 2631.31it/s]
+Extraction Answers from LLM Response: 3it [00:00, 78154.73it/s]
+Retrieving: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 677.05it/s]
+Length of retrieved docs (9) is smaller than largest topk for recall score (200)
+Length of retrieved docs (9) is smaller than largest topk for recall score (200)
+Length of retrieved docs (9) is smaller than largest topk for recall score (200)
+Collecting QA prompts: 100%|████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 36900.04it/s]
+QA Reading: 100%|████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 3014.59it/s]
+Extraction Answers from LLM Response: 3it [00:00, 202950.19it/s]
+([QuerySolution(question="What is George Rankin's occupation?", docs=['George Rankin is a politician.', 'Thomas Marwick is a politician.', 'Oliver Badman is a politician.', 'Montebello is a part of Rockland County.', 'Marina is bom in Minsk.', "Erik Hort's birthplace is Montebello.", 'The prince used the lost glass slipper to search the kingdom.', 'When the slipper fit perfectly, Cinderella was reunited with the prince.', 'Cinderella attended the royal ball.'], doc_scores=array([1.        , 0.20697364, 0.19467027, 0.12020551, 0.07987539,
+       0.0749496 , 0.07235771, 0.05784214, 0.        ], dtype=float32), answer='Politician.', gold_answers=['Politician'], gold_docs=['George Rankin is a politician.']), QuerySolution(question='How did Cinderella reach her happy ending?', docs=['When the slipper fit perfectly, Cinderella was reunited with the prince.', 'Cinderella attended the royal ball.', 'The prince used the lost glass slipper to search the kingdom.', 'Marina is bom in Minsk.', 'Montebello is a part of Rockland County.', 'Thomas Marwick is a politician.', 'George Rankin is a politician.', "Erik Hort's birthplace is Montebello.", 'Oliver Badman is a politician.'], doc_scores=array([1.47723310e-01, 8.07949975e-03, 4.42189436e-03, 1.02747368e-03,
+       5.21765230e-04, 4.41726893e-04, 3.11764007e-04, 3.32584488e-05,
+       0.00000000e+00]), answer='Cinderella reached her happy ending by having the glass slipper fit perfectly, reuniting her with the prince after attending the royal ball.', gold_answers=['By going to the ball.'], gold_docs=['Cinderella attended the royal ball.', 'The prince used the lost glass slipper to search the kingdom.', 'When the slipper fit perfectly, Cinderella was reunited with the prince.']), QuerySolution(question="What county is Erik Hort's birthplace a part of?", docs=['Montebello is a part of Rockland County.', "Erik Hort's birthplace is Montebello.", 'Marina is bom in Minsk.', 'George Rankin is a politician.', 'The prince used the lost glass slipper to search the kingdom.', 'Thomas Marwick is a politician.', 'Oliver Badman is a politician.', 'When the slipper fit perfectly, Cinderella was reunited with the prince.', 'Cinderella attended the royal ball.'], doc_scores=array([1.43240835e-01, 1.21890320e-02, 1.96095421e-03, 1.26009426e-03,
+       1.14073008e-03, 9.55475455e-04, 2.40689053e-04, 1.36937947e-04,
+       0.00000000e+00]), answer='Rockland County.', gold_answers=['Rockland County'], gold_docs=["Erik Hort's birthplace is Montebello.", 'Montebello is a part of Rockland County.'])], ['The text states that George Rankin is a politician. Therefore, his occupation is clearly defined as such. There are no additional details or context needed to determine his occupation from the provided information. \nAnswer: Politician.', "To determine how Cinderella reached her happy ending, I need to analyze the provided passages related to her story. The first passage indicates that Cinderella was reunited with the prince when the slipper fit perfectly, which suggests that the fitting of the slipper was a crucial moment leading to her happy ending. The second passage states that Cinderella attended the royal ball, which is likely where she first met the prince. The third passage mentions that the prince used the lost glass slipper to search the kingdom, indicating that the slipper was instrumental in finding Cinderella again. \n\nPutting these pieces together, Cinderella's happy ending was achieved through the combination of attending the royal ball, the prince searching for her using the glass slipper, and ultimately, the slipper fitting her perfectly, leading to their reunion.\n\nAnswer: Cinderella reached her happy ending by having the glass slipper fit perfectly, reuniting her with the prince after attending the royal ball.", "Erik Hort's birthplace is Montebello, which is stated to be a part of Rockland County. Therefore, Erik Hort's birthplace is also part of Rockland County. \nAnswer: Rockland County."], [{'prompt_tokens': 742, 'completion_tokens': 45, 'finish_reason': 'stop'}, {'prompt_tokens': 752, 'completion_tokens': 179, 'finish_reason': 'stop'}, {'prompt_tokens': 752, 'completion_tokens': 44, 'finish_reason': 'stop'}], {'Recall@1': 0.6111, 'Recall@2': 0.8889, 'Recall@5': 1.0, 'Recall@10': 1.0, 'Recall@20': 1.0, 'Recall@30': 1.0, 'Recall@50': 1.0, 'Recall@100': 1.0, 'Recall@150': 1.0, 'Recall@200': 1.0}, {'ExactMatch': 0.6667, 'F1': 0.7246})
+(hipporag) (base) perry@DESKTOP-LGGEMNE:~/nlp2025/rag_aura_gang$ 
 ```
 
-### Local Deployment (vLLM)
+## notes
 
-This simple example will illustrate how to use `hipporag` with any vLLM-compatible locally deployed LLM.
-
-1. Run a local [OpenAI-compatible vLLM server](https://docs.vllm.ai/en/latest/getting_started/quickstart.html#quickstart-online) with specified GPUs (make sure you leave enough memory for your embedding model).
-
-```sh
-export CUDA_VISIBLE_DEVICES=0,1
-export VLLM_WORKER_MULTIPROC_METHOD=spawn
-export HF_HOME=<path to Huggingface home directory>
-
-conda activate hipporag  # vllm should be in this environment
-
-# Tune gpu-memory-utilization or max_model_len to fit your GPU memory, if OOM occurs
-vllm serve meta-llama/Llama-3.3-70B-Instruct --tensor-parallel-size 2 --max_model_len 4096 --gpu-memory-utilization 0.95 
-```
-
-2. Now you can use very similar code to the one above to use `hipporag`: 
-
-```python
-save_dir = 'outputs'# Define save directory for HippoRAG objects (each LLM/Embedding model combination will create a new subdirectory)
-llm_model_name = # Any OpenAI model name
-embedding_model_name = # Embedding model name (NV-Embed, GritLM or Contriever for now)
-llm_base_url= # Base url for your deployed LLM (i.e. http://localhost:8000/v1)
-
-hipporag = HippoRAG(save_dir=save_dir,
-                    llm_model_name=llm_model,
-                    embedding_model_name=embedding_model_name,
-                    llm_base_url=llm_base_url)
-
-# Same Indexing, Retrieval and QA as running OpenAI models above
-```
-
-## Running Experiments
-
-To use our code to run experiments we recommend you clone this repository and follow the structure of the `main.py` script.
-
-### Data for Reproducibility
-
-We evaluated several sampled datasets in our paper, some of which are already included in the `reproduce/dataset` directory of this repo. For the complete set of datasets, please visit
-our [HuggingFace dataset](https://huggingface.co/datasets/osunlp/HippoRAG_v2) and place them under `reproduce/dataset`. We also provide the OpenIE results for both `gpt-4o-mini` and `Llama-3.3-70B-Instruct` for our `musique` sample under `outputs/musique`.
-
-To test your environment is properly set up, you can use the small dataset `reproduce/dataset/sample.json` for debugging as shown below.
-
-### Running Indexing & QA
-
-Initialize the environmental variables and activate the environment:
-
-```sh
-export CUDA_VISIBLE_DEVICES=0,1,2,3
-export HF_HOME=<path to Huggingface home directory>
-export OPENAI_API_KEY=<your openai api key>   # if you want to use OpenAI model
-
-conda activate hipporag
-```
-
-### Run with OpenAI Model
-
-```sh
-dataset=sample  # or any other dataset under `reproduce/dataset`
-
-# Run OpenAI model
-python main.py --dataset $dataset --llm_base_url https://api.openai.com/v1 --llm_name gpt-4o-mini --embedding_name nvidia/NV-Embed-v2
-```
-
-### Run with vLLM (Llama)
-
-1. As above, run a local [OpenAI-compatible vLLM server](https://docs.vllm.ai/en/latest/getting_started/quickstart.html#quickstart-online) with specified GPU.
-
-```sh
-export CUDA_VISIBLE_DEVICES=0,1
-export VLLM_WORKER_MULTIPROC_METHOD=spawn
-export HF_HOME=<path to Huggingface home directory>
-
-conda activate hipporag  # vllm should be in this environment
-
-# Tune gpu-memory-utilization or max_model_len to fit your GPU memory, if OOM occurs
-vllm serve meta-llama/Llama-3.3-70B-Instruct --tensor-parallel-size 2 --max_model_len 4096 --gpu-memory-utilization 0.95 
-```
-
-2. Use another GPUs to run the main program in another terminal.
-
-```sh
-export CUDA_VISIBLE_DEVICES=2,3  # set another GPUs while vLLM server is running
-export HF_HOME=<path to Huggingface home directory>
-dataset=sample
-
-python main.py --dataset $dataset --llm_base_url http://localhost:8000/v1 --llm_name meta-llama/Llama-3.3-70B-Instruct --embedding_name nvidia/NV-Embed-v2
-```
-
-#### Advanced: Run with vLLM offline batch
-
-vLLM offers an [offline batch mode](https://docs.vllm.ai/en/latest/getting_started/quickstart.html#offline-batched-inference) for faster inference, which could bring us more than 3x faster indexing compared to vLLM online server. 
-
-1. Use the following command to run the main program with vLLM offline batch mode.
-
-```sh
-export CUDA_VISIBLE_DEVICES=0,1,2,3 # use all GPUs for faster offline indexing
-export VLLM_WORKER_MULTIPROC_METHOD=spawn
-export HF_HOME=<path to Huggingface home directory>
-export OPENAI_API_KEY=''
-dataset=sample
-
-python main.py --dataset $dataset --llm_name meta-llama/Llama-3.3-70B-Instruct --openie_mode offline --skip_graph
-```
-
-2. After the first step, OpenIE result is saved to file. Go back to run vLLM online server and main program as described in the `Run with vLLM (Llama)` main section.
-
-## Debugging Note
-
-- `/reproduce/dataset/sample.json` is a small dataset specifically for debugging.
-- When debugging vLLM offline mode, set `tensor_parallel_size` as `1` in `hipporag/llm/vllm_offline.py`.
-- If you want to rerun a particular experiment, remember to clear the saved files, including OpenIE results and knowledge graph, e.g.,
-
-```sh
-rm reproduce/dataset/openie_results/openie_sample_results_ner_meta-llama_Llama-3.3-70B-Instruct_3.json
-rm -rf outputs/sample/sample_meta-llama_Llama-3.3-70B-Instruct_nvidia_NV-Embed-v2
-```
-### Custom Datasets
-
-To setup your own custom dataset for evaluation, follow the format and naming convention shown in `reproduce/dataset/sample_corpus.json` (your dataset's name should be followed by `_corpus.json`). If running an experiment with pre-defined questions, organize your query corpus according to the query file `reproduce/dataset/sample.json`, be sure to also follow our naming convention.
-
-The corpus and optional query JSON files should have the following format:
-
-#### Retrieval Corpus JSON
-
-```json
-[
-  {
-    "title": "FIRST PASSAGE TITLE",
-    "text": "FIRST PASSAGE TEXT",
-    "idx": 0
-  },
-  {
-    "title": "SECOND PASSAGE TITLE",
-    "text": "SECOND PASSAGE TEXT",
-    "idx": 1
-  }
-]
-```
-
-#### (Optional) Query JSON
-
-```json
-
-[
-  {
-    "id": "sample/question_1.json",
-    "question": "QUESTION",
-    "answer": [
-      "ANSWER"
-    ],
-    "answerable": true,
-    "paragraphs": [
-      {
-        "title": "{FIRST SUPPORTING PASSAGE TITLE}",
-        "text": "{FIRST SUPPORTING PASSAGE TEXT}",
-        "is_supporting": true,
-        "idx": 0
-      },
-      {
-        "title": "{SECOND SUPPORTING PASSAGE TITLE}",
-        "text": "{SECOND SUPPORTING PASSAGE TEXT}",
-        "is_supporting": true,
-        "idx": 1
-      }
-    ]
-  }
-]
-```
-
-#### (Optional) Chunking Corpus
-
-When preparing your data, you may need to chunk each passage, as longer passage may be too complex for the OpenIE process.
-
-## Code Structure
-
-```
-📦 .
-│-- 📂 src/hipporag
-│   ├── 📂 embedding_model          # Implementation of all embedding models
-│   │   ├── __init__.py             # Getter function for get specific embedding model classes
-|   |   ├── base.py                 # Base embedding model class `BaseEmbeddingModel` to inherit and `EmbeddingConfig`
-|   |   ├── NVEmbedV2.py            # Implementation of NV-Embed-v2 model
-|   |   ├── ...
-│   ├── 📂 evaluation               # Implementation of all evaluation metrics
-│   │   ├── __init__.py
-|   |   ├── base.py                 # Base evaluation metric class `BaseMetric` to inherit
-│   │   ├── qa_eval.py              # Eval metrics for QA
-│   │   ├── retrieval_eval.py       # Eval metrics for retrieval
-│   ├── 📂 information_extraction  # Implementation of all information extraction models
-│   │   ├── __init__.py
-|   |   ├── openie_openai_gpt.py    # Model for OpenIE with OpenAI GPT
-|   |   ├── openie_vllm_offline.py  # Model for OpenIE with LLMs deployed offline with vLLM
-│   ├── 📂 llm                      # Classes for inference with large language models
-│   │   ├── __init__.py             # Getter function
-|   |   ├── base.py                 # Config class for LLM inference and base LLM inference class to inherit
-|   |   ├── openai_gpt.py           # Class for inference with OpenAI GPT
-|   |   ├── vllm_llama.py           # Class for inference using a local vLLM server
-|   |   ├── vllm_offline.py         # Class for inference using the vLLM API directly
-│   ├── 📂 prompts                  # Prompt templates and prompt template manager class
-|   │   ├── 📂 dspy_prompts         # Prompts for filtering
-|   │   │   ├── ...
-|   │   ├── 📂 templates            # All prompt templates for template manager to load
-|   │   │   ├── README.md           # Documentations of usage of prompte template manager and prompt template files
-|   │   │   ├── __init__.py
-|   │   │   ├── triple_extraction.py
-|   │   │   ├── ...
-│   │   ├── __init__.py
-|   |   ├── linking.py              # Instruction for linking
-|   |   ├── prompt_template_manager.py  # Implementation of prompt template manager
-│   ├── 📂 utils                    # All utility functions used across this repo (the file name indicates its relevant usage)
-│   │   ├── config_utils.py         # We use only one config across all modules and its setup is specified here
-|   |   ├── ...
-│   ├── __init__.py
-│   ├── HippoRAG.py          # Highest level class for initiating retrieval, question answering, and evaluations
-│   ├── embedding_store.py   # Storage database to load, manage and save embeddings for passages, entities and facts.
-│   ├── rerank.py            # Reranking and filtering methods
-│-- 📂 examples
-│   ├── ...
-│   ├── ...
-│-- 📜 README.md
-│-- 📜 requirements.txt   # Dependencies list
-│-- 📜 .gitignore         # Files to exclude from Git
-
-
-```
-
-## Contact
-
-Questions or issues? File an issue or contact 
-[Bernal Jiménez Gutiérrez](mailto:jimenezgutierrez.1@osu.edu),
-[Yiheng Shu](mailto:shu.251@osu.edu),
-[Yu Su](mailto:su.809@osu.edu),
-The Ohio State University
-
-## Citation
-
-If you find this work useful, please consider citing our papers:
-
-### HippoRAG 2
-```
-@misc{gutiérrez2025ragmemorynonparametriccontinual,
-      title={From RAG to Memory: Non-Parametric Continual Learning for Large Language Models}, 
-      author={Bernal Jiménez Gutiérrez and Yiheng Shu and Weijian Qi and Sizhe Zhou and Yu Su},
-      year={2025},
-      eprint={2502.14802},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2502.14802}, 
-}
-```
-
-### HippoRAG
-
-```
-@inproceedings{gutiérrez2024hipporag,
-      title={HippoRAG: Neurobiologically Inspired Long-Term Memory for Large Language Models}, 
-      author={Bernal Jiménez Gutiérrez and Yiheng Shu and Yu Gu and Michihiro Yasunaga and Yu Su},
-      booktitle={The Thirty-eighth Annual Conference on Neural Information Processing Systems},
-      year={2024},
-      url={https://openreview.net/forum?id=hkujvAPVsg}
- ```
-
-## TODO:
-
-- [ ] Add support for more embedding models
-- [ ] Add support for vector database integration
-- [ ] Add support for embedding endpoints
-
-Please feel free to open an issue or PR if you have any questions or suggestions.
+- HippoRAG/main.py has some configs that we can tune, as well as changing the dataset
+- running on local is quite expensive
+- possible topics
+  - create our own dataset
+  - change hyper parameters
