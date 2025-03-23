@@ -3,6 +3,8 @@ import torch
 
 from src. hipporag.utils.config_utils import BaseConfig
 torch.cuda.empty_cache()
+# Disable cuDNN benchmark to reduce memory usage
+torch.backends.cudnn.benchmark = False
 # Prepare datasets and evaluation
 docs = [
     "Oliver Badman is a politician.",
