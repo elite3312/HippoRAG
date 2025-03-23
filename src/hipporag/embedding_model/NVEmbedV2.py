@@ -55,7 +55,7 @@ class NVEmbedV2EmbeddingModel(BaseEmbeddingModel):
             "norm": self.global_config.embedding_return_as_normalized,
             # "max_seq_length": self.global_config.embedding_max_seq_len,
             "model_init_params": {
-                 "model_name_or_path": self.embedding_model_name2mode_name_or_path[self.embedding_model_name],
+                # "model_name_or_path": self.embedding_model_name2mode_name_or_path[self.embedding_model_name],
                 "pretrained_model_name_or_path": self.embedding_model_name,
                 "trust_remote_code": True,
                 "torch_dtype": "auto",
