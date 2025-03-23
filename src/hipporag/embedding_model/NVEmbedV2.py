@@ -9,7 +9,7 @@ from transformers import AutoModel
 from ..utils.config_utils import BaseConfig
 from ..utils.logging_utils import get_logger
 from .base import BaseEmbeddingModel, EmbeddingConfig, make_cache_embed
-
+from transformers import AutoModelForCausalLM
 logger = get_logger(__name__)
 
 
@@ -30,6 +30,18 @@ class NVEmbedV2EmbeddingModel(BaseEmbeddingModel):
         self.embedding_model = AutoModel.from_pretrained(**self.embedding_config.model_init_params)
         self.embedding_dim = self.embedding_model.config.hidden_size
         #self.embedding_model.gradient_checkpointing_enable()
+        import os
+        import tempfile
+
+        model = self.embedding_model
+        offload_dir='/content/offload'
+        os.makedirs(offload_dir) if not os.path.exists(offload_dir) else None
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            model.save_pretrained(tmp_dir, max_shard_size="200MB")
+            print('Temp Dir Path:', tmp_dir)
+            print(sorted(os.listdir(tmp_dir)))
+            new_model = AutoModelForCausalLM.from_pretrained(tmp_dir, low_cpu_mem_usage=True, device_map="auto", offload_folder=offload_dir)
     def _init_embedding_config(self) -> None:
         """
         Extract embedding model-specific parameters to init the EmbeddingConfig.
