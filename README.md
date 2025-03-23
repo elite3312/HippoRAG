@@ -14,6 +14,7 @@ git clone https://github.com/elite3312/HippoRAG.git
 cd HippoRAG
 pip install hipporag # this somehow installs pytorch==2.5.1, if cuda is too old need to downgrade
 conda install pytorch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0 pytorch-cuda=12.4 -c pytorch -c nvidia # cuda 12.4
+conda env remove --name lightrag
 ```
 
 ## running experiments
