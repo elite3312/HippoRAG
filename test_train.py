@@ -1,7 +1,8 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-
+print("PyTorch version:", torch.__version__)
+print("CUDA available:", torch.cuda.is_available())
 # Define a simple neural network
 class SimpleNN(nn.Module):
     def __init__(self):
