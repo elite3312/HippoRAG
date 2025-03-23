@@ -27,7 +27,6 @@ hipporag = HippoRAG(global_config=BaseConfig(embedding_batch_size=5,
                                              synonymy_edge_query_batch_size=10,
                                              synonymy_edge_key_batch_size=10,
                                              synonymy_edge_topk=5,
-                                             embedding_return_as_cpu=True,#GritLM
                                              ),
                     save_dir=save_dir, 
                     llm_model_name=llm_model_name,
