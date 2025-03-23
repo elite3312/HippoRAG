@@ -72,3 +72,5 @@ Extraction Answers from LLM Response: 3it [00:00, 202950.19it/s]
   - create our own dataset
   - change hyper parameters
     - src/hipporag/utils/config_utils.py
+- gcp image
+  - c0-deeplearning-common-cu123-v20250310-debian-11-py310
