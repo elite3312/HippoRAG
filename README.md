@@ -5,7 +5,8 @@
 ```sh
 #conda bin is at:
 #/home/perry/miniconda3/bin
-
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash ~/Miniconda3-latest-Linux-x86_64.sh
 conda create -n hipporag python=3.10 # create a venv called hipporag
 conda activate hipporag
 pip install hipporag
@@ -22,7 +23,7 @@ export OPENAI_API_KEY=<open ai key>   # if you want to use OpenAI model
 conda activate hipporag
 ```
 
-- run example.py
+- python example.py
 
 ```txt
 (hipporag) (base) perry@DESKTOP-LGGEMNE:~/nlp2025/rag_aura_gang$ /home/perry/miniconda3/envs/hipporag/bin/python /home/perry/nlp2025/rag_aura_gang/example.py
