@@ -41,7 +41,7 @@ class NVEmbedV2EmbeddingModel(BaseEmbeddingModel):
             model.save_pretrained(tmp_dir, max_shard_size="200MB")
             print('Temp Dir Path:', tmp_dir)
             print(sorted(os.listdir(tmp_dir)))
-            new_model = AutoModelForCausalLM.from_pretrained(tmp_dir, low_cpu_mem_usage=True, device_map="auto", offload_folder=offload_dir)
+            self.embedding_model  = AutoModelForCausalLM.from_pretrained(tmp_dir, low_cpu_mem_usage=True, device_map="auto", offload_folder=offload_dir)
     def _init_embedding_config(self) -> None:
         """
         Extract embedding model-specific parameters to init the EmbeddingConfig.
