@@ -29,7 +29,7 @@ class NVEmbedV2EmbeddingModel(BaseEmbeddingModel):
 
         self.embedding_model = AutoModel.from_pretrained(**self.embedding_config.model_init_params)
         self.embedding_dim = self.embedding_model.config.hidden_size
-
+        self.embedding_model.gradient_checkpointing_enable()
     def _init_embedding_config(self) -> None:
         """
         Extract embedding model-specific parameters to init the EmbeddingConfig.
