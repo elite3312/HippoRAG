@@ -9,7 +9,11 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash ~/Miniconda3-latest-Linux-x86_64.sh
 conda create -n hipporag python=3.10 # create a venv called hipporag
 conda activate hipporag
-pip install hipporag
+
+git clone https://github.com/elite3312/HippoRAG.git
+cd HippoRAG
+pip install hipporag # this somehow installs pytorch==2.5.1, if cuda is too old need to downgrade
+conda install pytorch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0 pytorch-cuda=12.4 -c pytorch -c nvidia # cuda 12.4
 ```
 
 ## running experiments
@@ -21,9 +25,10 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3 # change according to how many gpus you have
 #export HF_HOME=<path to Huggingface home directory>
 export OPENAI_API_KEY=<open ai key>   # if you want to use OpenAI model
 conda activate hipporag
+python example.py
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 ```
 
-- python example.py
 
 ```txt
 (hipporag) (base) perry@DESKTOP-LGGEMNE:~/nlp2025/rag_aura_gang$ /home/perry/miniconda3/envs/hipporag/bin/python /home/perry/nlp2025/rag_aura_gang/example.py

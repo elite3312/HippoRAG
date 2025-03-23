@@ -1,5 +1,6 @@
 from hipporag import HippoRAG
-
+import torch
+torch.cuda.empty_cache()
 # Prepare datasets and evaluation
 docs = [
     "Oliver Badman is a politician.",
