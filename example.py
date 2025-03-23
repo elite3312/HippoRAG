@@ -1,8 +1,10 @@
 from hipporag import HippoRAG
 import torch
-
 from src. hipporag.utils.config_utils import BaseConfig
-torch.cuda.empty_cache()
+
+# Use 50% of the available GPU memory
+torch.cuda.set_per_process_memory_fraction(0.5, device=0)
+#torch.cuda.empty_cache()
 # Disable cuDNN benchmark to reduce memory usage
 torch.backends.cudnn.benchmark = False
 # Prepare datasets and evaluation
