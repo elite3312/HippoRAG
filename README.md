@@ -26,7 +26,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3 # change according to how many gpus you have
 export OPENAI_API_KEY=<open ai key>   # if you want to use OpenAI model
 conda activate hipporag
 python example.py
-#export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 ```
 
 

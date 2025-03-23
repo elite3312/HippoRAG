@@ -46,7 +46,7 @@ class GritLMEmbeddingModel(BaseEmbeddingModel):
 
         config_dict = {
             "embedding_model_name": self.embedding_model_name,
-            "return_cpu": True,#self.global_config.embedding_return_as_cpu,
+            "return_cpu": self.global_config.embedding_return_as_cpu,
             "return_numpy": self.global_config.embedding_return_as_numpy,
             "norm": self.global_config.embedding_return_as_normalized,
             "model_init_params": {

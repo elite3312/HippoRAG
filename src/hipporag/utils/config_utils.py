@@ -14,6 +14,14 @@ logger = get_logger(__name__)
 @dataclass
 class BaseConfig:
     """One and only configuration."""
+    embedding_return_as_cpu: bool = field(
+        default=False,
+        metadata={"help": "Whether to return embeddings as CPU tensors or not."}
+    )
+    embedding_return_as_numpy: bool = field(
+        default=False,
+        metadata={"help": "Whether to return embeddings as numpy arrays or not."}
+    )
     # LLM specific attributes 
     llm_name: str = field(
         default="gpt-4o-mini",
