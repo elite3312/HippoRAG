@@ -1,5 +1,7 @@
 from hipporag import HippoRAG
 import torch
+
+from src. hipporag.utils.config_utils import BaseConfig
 torch.cuda.empty_cache()
 # Prepare datasets and evaluation
 docs = [
@@ -19,7 +21,8 @@ llm_model_name = 'gpt-4o-mini'#'DeepSeek-V3-Base' #'gpt-4o-mini' # Any OpenAI mo
 embedding_model_name = 'nvidia/NV-Embed-v2'# Embedding model name (NV-Embed, GritLM or Contriever for now)
 
 #Startup a HippoRAG instance
-hipporag = HippoRAG(save_dir=save_dir, 
+hipporag = HippoRAG(global_config=BaseConfig(embedding_batch_size=1),
+                    save_dir=save_dir, 
                     llm_model_name=llm_model_name,
                     embedding_model_name=embedding_model_name) 
 
