@@ -20,7 +20,7 @@ docs = [
 
 save_dir = 'outputs'# Define save directory for HippoRAG objects (each LLM/Embedding model combination will create a new subdirectory)
 llm_model_name = 'gpt-4o-mini'#'DeepSeek-V3-Base' #'gpt-4o-mini' # Any OpenAI model name
-embedding_model_name = 'nvidia/NV-Embed-v2'# Embedding model name (NV-Embed, GritLM or Contriever for now)
+embedding_model_name = 'GritLM'#'nvidia/NV-Embed-v2'# Embedding model name (NV-Embed, GritLM or Contriever for now)
 
 #Startup a HippoRAG instance
 hipporag = HippoRAG(global_config=BaseConfig(embedding_batch_size=1,
