@@ -34,7 +34,7 @@ class NVEmbedV2EmbeddingModel(BaseEmbeddingModel):
         import tempfile
 
         model = self.embedding_model
-        offload_dir='/content/offload'
+        offload_dir='/home/perrywu12/HippoRAG'
         os.makedirs(offload_dir) if not os.path.exists(offload_dir) else None
 
         with tempfile.TemporaryDirectory() as tmp_dir:
