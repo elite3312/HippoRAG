@@ -30,18 +30,18 @@ class NVEmbedV2EmbeddingModel(BaseEmbeddingModel):
         self.embedding_model = AutoModel.from_pretrained(**self.embedding_config.model_init_params)
         self.embedding_dim = self.embedding_model.config.hidden_size
         #self.embedding_model.gradient_checkpointing_enable()
-        import os
-        import tempfile
-
-        model = self.embedding_model
-        offload_dir='/home/perrywu12/HippoRAG'
-        os.makedirs(offload_dir) if not os.path.exists(offload_dir) else None
-
-        with tempfile.TemporaryDirectory() as tmp_dir:
-            model.save_pretrained(tmp_dir, max_shard_size="200MB")
-            print('Temp Dir Path:', tmp_dir)
-            print(sorted(os.listdir(tmp_dir)))
-            self.embedding_model  = AutoModelForCausalLM.from_pretrained(tmp_dir, low_cpu_mem_usage=True, device_map="auto", offload_folder=offload_dir)
+        #import os
+        #import tempfile
+#
+        #model = self.embedding_model
+        #offload_dir='/home/perrywu12/HippoRAG'
+        #os.makedirs(offload_dir) if not os.path.exists(offload_dir) else None
+#
+        #with tempfile.TemporaryDirectory() as tmp_dir:
+        #    model.save_pretrained(tmp_dir, max_shard_size="200MB")
+        #    print('Temp Dir Path:', tmp_dir)
+        #    print(sorted(os.listdir(tmp_dir)))
+        #    self.embedding_model  = AutoModelForCausalLM.from_pretrained(tmp_dir, low_cpu_mem_usage=True, device_map="auto", offload_folder=offload_dir)
     def _init_embedding_config(self) -> None:
         """
         Extract embedding model-specific parameters to init the EmbeddingConfig.
@@ -59,7 +59,7 @@ class NVEmbedV2EmbeddingModel(BaseEmbeddingModel):
                 "pretrained_model_name_or_path": self.embedding_model_name,
                 "trust_remote_code": True,
                 # "torch_dtype": "auto",
-                'device_map': "auto",  # added this line to use multiple GPUs
+                'device_map':  {"model.layers.1": 0, "model.layers.14": 1, "model.layers.31": "cpu", "lm_head": "disk"}#"auto",  # added this line to use multiple GPUs
                 # **kwargs
             },
             "encode_params": {
