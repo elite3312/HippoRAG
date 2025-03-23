@@ -59,7 +59,7 @@ class NVEmbedV2EmbeddingModel(BaseEmbeddingModel):
                 "pretrained_model_name_or_path": self.embedding_model_name,
                 "trust_remote_code": True,
                 # "torch_dtype": "auto",
-                'device_map':  {"model.layers.1": 0, "model.layers.14": 1, "model.layers.31": "cpu", "lm_head": "disk"}#"auto",  # added this line to use multiple GPUs
+                'device_map':  {"model.layers.1": 0, "model.layers.14": 1}#, "model.layers.31": "cpu", "lm_head": "disk"}#"auto",  # added this line to use multiple GPUs
                 # **kwargs
             },
             "encode_params": {
