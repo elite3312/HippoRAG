@@ -68,7 +68,7 @@ def get_gold_answers(samples):
 
 def main():
     parser = argparse.ArgumentParser(description="HippoRAG retrieval and QA")
-    parser.add_argument('--dataset', type=str, default='musique', help='Dataset name')
+    parser.add_argument('--dataset', type=str, default='sample', help='Dataset name')# default='musique'
     parser.add_argument('--llm_base_url', type=str, default='https://api.openai.com/v1', help='LLM base URL')
     parser.add_argument('--llm_name', type=str, default='gpt-4o-mini', help='LLM name')
     parser.add_argument('--embedding_name', type=str, default='nvidia/NV-Embed-v2', help='embedding model name')
