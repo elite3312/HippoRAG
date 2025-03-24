@@ -1,6 +1,7 @@
-from hipporag import HippoRAG
-import torch
+#from hipporag import HippoRAG
+from src.hipporag.HippoRAG import HippoRAG
 from src. hipporag.utils.config_utils import BaseConfig
+#import torch
 
 # Use 50% of the available GPU memory
 #torch.cuda.set_per_process_memory_fraction(0.5, device=0)

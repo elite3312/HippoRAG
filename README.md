@@ -68,10 +68,12 @@ Extraction Answers from LLM Response: 3it [00:00, 202950.19it/s]
 ## notes
 
 - HippoRAG/main.py has some configs that we can tune, as well as changing the dataset
+- basic config contains more hyperparameters
 - running on local is quite expensive
 - possible topics
   - create our own dataset
   - change hyper parameters
     - src/hipporag/utils/config_utils.py
 - gcp image
-  - c0-deeplearning-common-cu123-v20250310-debian-11-py310
+  - c0-deeplearning-common-cu124-v20250310-debian-11-py310
+- nvembedv2.py "torch_dtype": "auto", in _init_embedding_config() can reduce the size of the embedding model on the gpu
