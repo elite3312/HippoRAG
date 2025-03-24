@@ -1,5 +1,21 @@
 # hipporag
 
+### 250324會議記錄
+
+- 題目
+  - 依照現有proposal，加入更多提升效能的方法
+- 分配工作
+  - Perry
+    - 準備好IT use case資料集
+    - 針對超參數做ablation study
+  - Patrick
+    - 改良prompt template
+    - using different methods for linking queries to the Knowledge Graph in HippoRAG. 
+    - using different Retriever Encoder
+  - Song
+    - 讀hipporag2的f1 score計算方式
+    - 用其他model做retrieval
+
 ## install
 
 ```sh
