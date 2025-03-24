@@ -15,6 +15,8 @@
   - Song
     - 讀hipporag2的f1 score計算方式
     - 用其他model做retrieval
+- chunking is done by NER in Hipporag
+- may have to consider splitting the IT dataset into train and test
 
 ## install
 
@@ -136,3 +138,4 @@ watch nvidia-smi
 - gcp image
   - c0-deeplearning-common-cu124-v20250310-debian-11-py310
 - nvembedv2.py "torch_dtype": "auto", in _init_embedding_config() can reduce the size of the embedding model on the gpu
+
