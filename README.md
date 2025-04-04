@@ -47,8 +47,10 @@ watch nvidia-smi
   conda activate hipporag
   python example.py
   export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+  python main.py --dataset itsupport
   ```
-
+- use this convert the data from it support case into compatible input
+  - convert_to_json_str.py
 - running on local
   ```txt
   (hipporag) (base) perry@DESKTOP-LGGEMNE:~/nlp2025/rag_aura_gang$ /home/perry/miniconda3/envs/hipporag/bin/python /home/perry/nlp2025/rag_aura_gang/example.py
@@ -126,6 +128,7 @@ watch nvidia-smi
         1.41936170e-03, 1.25971537e-03, 3.88207685e-04, 1.54272202e-04,
         4.93964848e-06]), answer='Rockland County.', gold_answers=['Rockland County'], gold_docs=["Erik Hort's birthplace is Montebello.", 'Montebello is a part of Rockland County.'])], ['The text states that George Rankin is a politician. Therefore, his occupation is clearly defined as such. There are no additional details or context needed to determine his occupation from the provided information. \nAnswer: Politician.', "To determine how Cinderella reached her happy ending, I need to analyze the provided passages related to her story. The first passage indicates that Cinderella was reunited with the prince when the slipper fit perfectly, which suggests that the fitting of the slipper was a crucial moment leading to her happy ending. The second passage states that Cinderella attended the royal ball, which is likely where she first met the prince. The third passage mentions that the prince used the lost glass slipper to search the kingdom, indicating that the slipper was instrumental in finding Cinderella again. \n\nCombining these elements, Cinderella's happy ending was achieved through the sequence of attending the royal ball, the prince searching for her using the lost glass slipper, and ultimately, the slipper fitting her perfectly, leading to their reunion.\n\nAnswer: Cinderella reached her happy ending by having the glass slipper fit perfectly, reuniting her with the prince after attending the royal ball.", "Erik Hort's birthplace is Montebello. According to the information provided, Montebello is a part of Rockland County. Therefore, Erik Hort's birthplace, Montebello, is also part of Rockland County. \nAnswer: Rockland County."], [{'prompt_tokens': 742, 'completion_tokens': 45, 'finish_reason': 'stop'}, {'prompt_tokens': 752, 'completion_tokens': 180, 'finish_reason': 'stop'}, {'prompt_tokens': 752, 'completion_tokens': 54, 'finish_reason': 'stop'}], {'Recall@1': 0.6111, 'Recall@2': 0.8889, 'Recall@5': 1.0, 'Recall@10': 1.0, 'Recall@20': 1.0, 'Recall@30': 1.0, 'Recall@50': 1.0, 'Recall@100': 1.0, 'Recall@150': 1.0, 'Recall@200': 1.0}, {'ExactMatch': 0.6667, 'F1': 0.7246})
   ```
+
 ## notes
 
 - HippoRAG/main.py has some configs that we can tune, as well as changing the dataset
