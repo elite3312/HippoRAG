@@ -1,10 +1,10 @@
 [
   {
     "id": "itsupport/question_1.json",
-    "question": "How do I set up my company email on my mobile device?",
+    "question": "To set up my company email on my mobile device, what needs to be installed? in the first step?", 
     "answer": [
-       "To set up your company email on your mobile device, please follow these steps:\n\n**First, ensure that you have a supported operating system (iOS, Android, or Windows) and a company email account.**\n\n1. **Check if a Mobile Device Management (MDM) profile is required**: If your company requires MDM for mobile devices, ensure that the profile is installed on your device. If you're unsure, contact your IT department for assistance.\n2. **Set up your email account**:\n\t* Go to the Settings app on your mobile device.\n\t* Select \"Mail\" or \"Email\" (depending on your device's operating system).\n\t* Tap \"Add Account\" or \"Create a new account\".\n\t* Select \"Exchange\" or \"Corporate\" as the account type.\n\t* Enter your company email address and password.\n\t* If prompted, enter the company's email server address (e.g., mail.company.com).\n\t* Select the desired synchronization options (e.g., sync email, contacts, calendar).\n3. **Configure your email settings**:\n\t* In the email account settings, select the \"Advanced\" or \"Security\" option.\n\t* Ensure that the \"Use SSL/TLS\" or \"Use secure connection\" option is enabled.\n\t* Set the authentication method to \"Username and Password\" or \"Domain\\Username\".\n\t* If prompted, enter your company's email domain (e.g., company.com).\n4. **Verify your email account**:\n\t* Wait for the email account to synchronize with the company email server.\n\t* Send a test email to yourself or a colleague to verify that email is sending and receiving correctly.\n\nIf you encounter any issues, refer to the troubleshooting tips provided. If you're still having trouble, don't hesitate to contact your IT department for assistance."     ],
-    "answerable": true,
+       "Mobile Device Management (MDM) Profile"],
+       "answerable": true,
     "paragraphs": [
       
     ]
