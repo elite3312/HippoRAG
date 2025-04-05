@@ -34,7 +34,7 @@ raw_text_0 = """To set up your company email on your mobile device, please follo
 If you encounter any issues, refer to the troubleshooting tips provided. If you're still having trouble, don't hesitate to contact your IT department for assistance."""
 
 
-raw_text=r"""**Setting Up a Mobile Device for Company Email**
+raw_text_0=r"""**Setting Up a Mobile Device for Company Email**
 
 **Prerequisites:**
 
@@ -79,8 +79,16 @@ If your company requires MDM for mobile devices, ensure that the profile is inst
 * For security reasons, it is recommended to set up a password or PIN lock on your mobile device.
 * Company email policies may require additional security measures, such as encryption or two-factor authentication. Contact your IT department for more information.
 * If you need further assistance or have questions about company email policies, contact your IT department or refer to the company's email policy documentation."""
+
+with open("./input.txt", "r", encoding="utf-8") as file:
+    raw_text= file.read()
+    
 # Convert the raw text to a JSON-compatible string
 json_string = convert_to_json_string(raw_text)
 
 # Print the result
 print(json_string)
+
+# Write the string to an output file
+with open("./output.txt", "w", encoding="utf-8") as file:
+    file.write(json_string)

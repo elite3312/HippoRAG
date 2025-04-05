@@ -1,0 +1,37 @@
+To set up your company email on your personal Android device, follow these steps:
+
+**Step 1: Open the Email App**
+
+Locate the Email app on your Android device and tap on it to open it.
+
+**Step 2: Add a New Account**
+
+Tap on the "Add account" or "Add email account" button and select "Corporate" as the account type.
+
+**Step 3: Enter Email Address and Password**
+
+Enter your company email address and password in the required fields. Tap "Next" to proceed.
+
+**Step 4: Configure Server Settings (If Required)**
+
+If the device is unable to automatically configure the server settings, you will need to enter them manually. You will need to know the following information:
+
+* Incoming server (ask your IT department for this information)
+* Port (ask your IT department for this information)
+* Security type (ask your IT department for this information)
+* Username (your company email address)
+* Password (your company email password)
+
+**Step 5: Configure Outgoing Server Settings (If Required)**
+
+Enter the same server settings as the incoming server settings.
+
+**Step 6: Configure Account Options**
+
+Choose your sync frequency, sync size, and whether to delete emails from the server after syncing.
+
+**Step 7: Complete Account Setup**
+
+Give your account a name and set it as the default account. Tap "Done" to complete the setup.
+
+**Important:** If you encounter any issues during the setup process, try restarting the Email app or your device. Ensure that your email account credentials are correct and that your internet connection is stable. If you are still experiencing issues, contact the IT helpdesk for further assistance.
