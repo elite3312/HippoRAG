@@ -8,6 +8,7 @@
   - Perry
     - 準備好IT use case資料集
     - 針對超參數做ablation study
+    - look into effects of more complicated questions
   - Patrick
     - 改良prompt template
     - using different methods for linking queries to the Knowledge Graph in HippoRAG. 
