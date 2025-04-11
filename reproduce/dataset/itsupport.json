@@ -128,7 +128,7 @@
   },
   {
     "id": "itsupport/question_7.json",
-    "question": "What steps should I follow to troubleshoot a jammed printer?",
+    "question": "What is the first step I should take to troubleshoot a jammed printer?",
     "answer": [
       "Clear jam"
     ],
@@ -160,7 +160,7 @@
   },
   {
     "id": "itsupport/question_9.json",
-    "question": "How can I configure my email on an Android device?",
+    "question": "What app should I use to configure my email on an Android device?",
     "answer": [
       "Email app"
     ],
