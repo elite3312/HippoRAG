@@ -31,10 +31,10 @@
     ]
   },
   {
-    "id": "itsupport/question_1.json",
+    "id": "itsupport/question_4.json",
     "question": "To set up my company email on my mobile device, what needs to be installed in the first step?",
     "answer": [
-      "MDM Profile"
+      "Mobile Device Management (MDM) profile"
     ],
     "answerable": true,
     "paragraphs": [
@@ -47,7 +47,7 @@
     ]
   },
   {
-    "id": "itsupport/question_2.json",
+    "id": "itsupport/question_5.json",
     "question": "What button should I click to reset my PIN on the \"Self-Service\" tab?",
     "answer": [
       "PIN Reset"
@@ -63,7 +63,7 @@
     ]
   },
   {
-    "id": "itsupport/question_3.json",
+    "id": "itsupport/question_6.json",
     "question": "What is the URL to verify the VPN connection?",
     "answer": [
       "company.com"
@@ -78,22 +78,7 @@
       }
     ]
   },
-  {
-    "id": "itsupport/question_4.json",
-    "question": "What should I do if I encounter issues connecting to the VPN?",
-    "answer": [
-      "Check requirements"
-    ],
-    "answerable": true,
-    "paragraphs": [
-      {
-        "title": "Configuring VPN Access for Remote Workers",
-        "text": "Ensure your device meets the minimum system requirements and that your internet connection is stable. If issues persist, contact the IT helpdesk.",
-        "is_supporting": true,
-        "idx": 2
-      }
-    ]
-  },
+
   {
     "id": "itsupport/question_5.json",
     "question": "How can I reset my company-issued tablet to factory settings?",
@@ -126,27 +111,12 @@
       }
     ]
   },
-  {
-    "id": "itsupport/question_7.json",
-    "question": "What is the first step I should take to troubleshoot a jammed printer?",
-    "answer": [
-      "Clear jam"
-    ],
-    "answerable": true,
-    "paragraphs": [
-      {
-        "title": "Resetting a Jammed Printer",
-        "text": "Turn off the printer, open the access panel, remove jammed paper, check for obstructions, and power it back on.",
-        "is_supporting": true,
-        "idx": 8
-      }
-    ]
-  },
+  
   {
     "id": "itsupport/question_8.json",
-    "question": "What should I do if I forget my company email password?",
+    "question": "Who should I contact if I forget my company email password?",
     "answer": [
-      "Contact IT"
+      "IT helpdesk"
     ],
     "answerable": true,
     "paragraphs": [
@@ -176,9 +146,9 @@
   },
   {
     "id": "itsupport/question_10.json",
-    "question": "What is the first step to troubleshoot Microsoft Office issues?",
+    "question": "What app should I restart first to troubleshoot Microsoft Office issues?",
     "answer": [
-      "Restart app"
+      "Microsoft Office application"
     ],
     "answerable": true,
     "paragraphs": [
