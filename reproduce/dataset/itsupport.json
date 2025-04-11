@@ -29,5 +29,165 @@
     "paragraphs": [
       
     ]
+  },
+  {
+    "id": "itsupport/question_1.json",
+    "question": "To set up my company email on my mobile device, what needs to be installed in the first step?",
+    "answer": [
+      "MDM Profile"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Setting Up a Mobile Device for Company Email",
+        "text": "Ensure that the Mobile Device Management (MDM) profile is installed on your device. This profile allows your device to connect to the company network and access company email. Contact your IT department if you are unsure whether MDM is required.",
+        "is_supporting": true,
+        "idx": 0
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_2.json",
+    "question": "What button should I click to reset my PIN on the \"Self-Service\" tab?",
+    "answer": [
+      "PIN Reset"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Resetting a Forgotten PIN",
+        "text": "Go to the \"Self-Service\" tab on the IT Support page and select \"PIN Reset\". You will be redirected to the PIN Reset Tool login page to complete the process.",
+        "is_supporting": true,
+        "idx": 1
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_3.json",
+    "question": "What is the URL to verify the VPN connection?",
+    "answer": [
+      "company.com"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Configuring VPN Access for Remote Workers",
+        "text": "To verify the VPN connection, open a web browser and navigate to company.com. Ensure you are connected to the VPN and can access company resources.",
+        "is_supporting": true,
+        "idx": 2
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_4.json",
+    "question": "What should I do if I encounter issues connecting to the VPN?",
+    "answer": [
+      "Check requirements"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Configuring VPN Access for Remote Workers",
+        "text": "Ensure your device meets the minimum system requirements and that your internet connection is stable. If issues persist, contact the IT helpdesk.",
+        "is_supporting": true,
+        "idx": 2
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_5.json",
+    "question": "How can I reset my company-issued tablet to factory settings?",
+    "answer": [
+      "Factory reset"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Troubleshooting Issues with Company-Issued Tablets",
+        "text": "Go to Settings > System > Advanced > Reset Options > Erase all data (factory reset). Ensure all important data is backed up before proceeding.",
+        "is_supporting": true,
+        "idx": 6
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_6.json",
+    "question": "What is the recommended wireless protocol for a secure network?",
+    "answer": [
+      "WPA2 or WPA3"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Setting Up a Secure Wireless Network",
+        "text": "Use WPA2-PSK (AES) or WPA3-PSK (AES-256) for secure wireless networks. Avoid outdated protocols like WEP or WPA.",
+        "is_supporting": true,
+        "idx": 7
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_7.json",
+    "question": "What steps should I follow to troubleshoot a jammed printer?",
+    "answer": [
+      "Clear jam"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Resetting a Jammed Printer",
+        "text": "Turn off the printer, open the access panel, remove jammed paper, check for obstructions, and power it back on.",
+        "is_supporting": true,
+        "idx": 8
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_8.json",
+    "question": "What should I do if I forget my company email password?",
+    "answer": [
+      "Contact IT"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Resetting a Forgotten Password",
+        "text": "Contact the IT helpdesk for assistance in resetting your company email password.",
+        "is_supporting": true,
+        "idx": 9
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_9.json",
+    "question": "How can I configure my email on an Android device?",
+    "answer": [
+      "Email app"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Setting Up a Mobile Device for Company Email",
+        "text": "Use the Email app, add your account, and configure the incoming and outgoing server settings. Contact IT for server details if needed.",
+        "is_supporting": true,
+        "idx": 0
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_10.json",
+    "question": "What is the first step to troubleshoot Microsoft Office issues?",
+    "answer": [
+      "Restart app"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Troubleshooting Issues with Microsoft Office",
+        "text": "Restart the Microsoft Office application experiencing issues. This simple step often resolves temporary glitches.",
+        "is_supporting": true,
+        "idx": 3
+      }
+    ]
   }
 ]
