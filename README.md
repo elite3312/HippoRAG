@@ -43,7 +43,7 @@ watch nvidia-smi
   
   ```sh
   export CUDA_VISIBLE_DEVICES=0,1,2,3 # change according to how many gpus you have
-  #export HF_HOME=<path to Huggingface home directory>
+  #export HF_HOME=<path to Huggingface home directory> # this can be omitted, and the data will simply be in .cache
   export OPENAI_API_KEY=<open ai key>   # if you want to use OpenAI model
   conda activate hipporag
   python example.py
