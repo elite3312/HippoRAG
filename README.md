@@ -14,7 +14,14 @@
     - using different methods for linking queries to the Knowledge Graph in HippoRAG. 
     - using different Retriever Encoder
   - Song
-    - 讀hipporag2的f1 score計算方式
+    - 讀hipporag2的f1 score計算方式（0415）
+        1. 根据共同词的数量计算Precision和召回率Recall
+        ```sh
+          precision = 1.0 * num_same / len(predicted_tokens)
+          recall = 1.0 * num_same / len(gold_tokens)
+        ```
+        2. f1 score = 2 * (precision * recall) / (precision + recall)
+        3. 聚合多个gold_answers的f1 score得到aggregated_f1，之后计算所有问题的平均f1 score：avg_f1　
     - 用其他model做retrieval
 - chunking is done by NER in Hipporag
 - may have to consider splitting the IT dataset into train and test
