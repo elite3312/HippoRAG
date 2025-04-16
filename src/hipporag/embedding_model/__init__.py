@@ -15,12 +15,6 @@ def _get_embedding_model_class(embedding_model_name: str = "nvidia/NV-Embed-v2")
         return NVEmbedV2EmbeddingModel
     elif "contriever" in embedding_model_name:
         return ContrieverModel
-    elif "voyage-multilingual-2" in embedding_model_name:
-        return VoyageMultilingual2EmbeddingModel
-    elif "jinaai/jina-embeddings-v2-small-en" in embedding_model_name:
-        return JinaEmbeddingsV2SmallEnEmbeddingModel
-    elif "BAAI/bge-en-icl" in embedding_model_name:
-        return BgeEnIclEmbeddingModel
     elif "text-embedding" in embedding_model_name:
         return OpenAIEmbeddingModel
     assert False, f"Unknown embedding model name: {embedding_model_name}"
