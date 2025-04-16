@@ -1,0 +1,261 @@
+[
+  {
+    "id": "itsupport/question_1.json",
+    "question": "To set up my company email on my mobile device, what needs to be installed? in the first step?", 
+    "answer": [
+       "Mobile Device Management Profile"],
+       "answerable": true,
+    "paragraphs": [
+      
+    ]
+  },
+  {
+    "id": "itsupport/question_2.json",
+    "question": "I forgot my PIN, and I am trying to reset it. I am on the \"IT Support\" page and I see many buttons under the \"Self-Service\" tab, what button should I click to reset my PIN?",
+    "answer": [
+       "PIN Reset"      ],
+    "answerable": true,
+    "paragraphs": [
+      
+    ]
+  },
+  
+  {
+    "id": "itsupport/question_3.json",
+    "question": "What is the url to access in order to verfiy the VPN connection?",
+    "answer": [
+       "company.com"      ],
+    "answerable": true,
+    "paragraphs": [
+      
+    ]
+  },
+  {
+    "id": "itsupport/question_4.json",
+    "question": "To set up my company email on my mobile device, what needs to be installed in the first step?",
+    "answer": [
+      "Mobile Device Management (MDM) profile"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Setting Up a Mobile Device for Company Email",
+        "text": "Ensure that the Mobile Device Management (MDM) profile is installed on your device. This profile allows your device to connect to the company network and access company email. Contact your IT department if you are unsure whether MDM is required.",
+        "is_supporting": true,
+        "idx": 0
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_5.json",
+    "question": "What button should I click to reset my PIN on the \"Self-Service\" tab?",
+    "answer": [
+      "PIN Reset"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Resetting a Forgotten PIN",
+        "text": "Go to the \"Self-Service\" tab on the IT Support page and select \"PIN Reset\". You will be redirected to the PIN Reset Tool login page to complete the process.",
+        "is_supporting": true,
+        "idx": 1
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_6.json",
+    "question": "What is the URL to verify the VPN connection?",
+    "answer": [
+      "company.com"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Configuring VPN Access for Remote Workers",
+        "text": "To verify the VPN connection, open a web browser and navigate to company.com. Ensure you are connected to the VPN and can access company resources.",
+        "is_supporting": true,
+        "idx": 2
+      }
+    ]
+  },
+
+  {
+    "id": "itsupport/question_5.json",
+    "question": "How can I reset my company-issued tablet to factory settings?",
+    "answer": [
+      "Factory reset"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Troubleshooting Issues with Company-Issued Tablets",
+        "text": "Go to Settings > System > Advanced > Reset Options > Erase all data (factory reset). Ensure all important data is backed up before proceeding.",
+        "is_supporting": true,
+        "idx": 6
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_6.json",
+    "question": "What is the recommended wireless protocol for a secure network?",
+    "answer": [
+      "WPA2 or WPA3"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Setting Up a Secure Wireless Network",
+        "text": "Use WPA2-PSK (AES) or WPA3-PSK (AES-256) for secure wireless networks. Avoid outdated protocols like WEP or WPA.",
+        "is_supporting": true,
+        "idx": 7
+      }
+    ]
+  },
+  
+  {
+    "id": "itsupport/question_8.json",
+    "question": "Who should I contact if I forget my company email password?",
+    "answer": [
+      "IT helpdesk"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Resetting a Forgotten Password",
+        "text": "Contact the IT helpdesk for assistance in resetting your company email password.",
+        "is_supporting": true,
+        "idx": 9
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_9.json",
+    "question": "What app should I use to configure my email on an Android device?",
+    "answer": [
+      "Email app"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Setting Up a Mobile Device for Company Email",
+        "text": "Use the Email app, add your account, and configure the incoming and outgoing server settings. Contact IT for server details if needed.",
+        "is_supporting": true,
+        "idx": 0
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_10.json",
+    "question": "What app should I restart first to troubleshoot Microsoft Office issues?",
+    "answer": [
+      "Microsoft Office application"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Troubleshooting Issues with Microsoft Office",
+        "text": "Restart the Microsoft Office application experiencing issues. This simple step often resolves temporary glitches.",
+        "is_supporting": true,
+        "idx": 3
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_13.json",
+    "question": "What button should I press to restart my company-issued tablet?",
+    "answer": [
+      "power button"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Troubleshooting Issues with Company-Issued Tablets",
+        "text": "Press and hold the power button to restart the tablet. If the issue persists, perform a factory reset.",
+        "is_supporting": true,
+        "idx": 6
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_14.json",
+    "question": "What FTP client can I use for windows?",
+    "answer": [
+      "WinSCP"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Setting Up a Secure FTP Connection",
+        "text": "Install an FTP client like FileZilla or WinSCP and configure it to use SFTP or FTPS.",
+        "is_supporting": true,
+        "idx": 24
+      }
+    ]
+  },
+  
+  {
+    "id": "itsupport/question_16.json",
+    "question": "What app should I use to set up a conference call?",
+    "answer": [
+      "Webex"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Setting Up a Conference Call on Cisco Webex",
+        "text": "Log in to Webex, schedule a meeting, and send invitations to participants.",
+        "is_supporting": true,
+        "idx": 4
+      }
+    ]
+  },
+ 
+  {
+    "id": "itsupport/question_18.json",
+    "question": "What option in File Explorer should I use to configure a network drive on Windows?",
+    "answer": [
+      "Map network drive'"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Configuring a Network Drive",
+        "text": "Open File Explorer, click 'Map network drive,' and enter the server address.",
+        "is_supporting": true,
+        "idx": 33
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_19.json",
+    "question": "What encryption is used to set up a secure connection to a database?",
+    "answer": [
+      "SSL/TLS."
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Setting Up a Secure Connection to a Database",
+        "text": "Install the required drivers, configure the connection string, and enable SSL/TLS encryption.",
+        "is_supporting": true,
+        "idx": 35
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_20.json",
+    "question": "How needs to be verified first if I need to troubleshoot issues with Skype for Business?",
+    "answer": [
+      "credentials"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Troubleshooting Issues with Skype for Business",
+        "text": "Verify credentials, restart Skype for Business, and check the network connection.",
+        "is_supporting": true,
+        "idx": 37
+      }
+    ]
+  }
+]
