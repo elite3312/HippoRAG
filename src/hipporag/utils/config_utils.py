@@ -14,6 +14,7 @@ logger = get_logger(__name__)
 @dataclass
 class BaseConfig:
     """One and only configuration."""
+    azure_embedding_endpoint=None,
     embedding_return_as_cpu: bool = field(
         default=False,
         metadata={"help": "Whether to return embeddings as CPU tensors or not."}
