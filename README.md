@@ -228,6 +228,7 @@ Initialize the environmental variables and activate the environment:
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 export HF_HOME=<path to Huggingface home directory>
 export OPENAI_API_KEY=<your openai api key>   # if you want to use OpenAI model
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 
 conda activate hipporag
 ```
