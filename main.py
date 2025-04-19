@@ -127,6 +127,7 @@ def main():
         max_new_tokens=None,
         corpus_len=len(corpus),
         openie_mode=args.openie_mode
+        passage_node_weight=0.5,
     )
 
     logging.basicConfig(level=logging.INFO)
