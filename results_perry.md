@@ -408,6 +408,7 @@
     ```
 - 0.01 
 
+
   ```txt
   (hipporag) perrywu12@instance-20250323-150245:~/HippoRAG$ git pull
     hint: Pulling without specifying how to reconcile divergent branches is
@@ -513,3 +514,15 @@
     Extraction Answers from LLM Response: 17it [00:00, 308671.72it/s]
     INFO:src.hipporag.HippoRAG:Evaluation results for QA: {'ExactMatch': 0.3529, 'F1': 0.684}
   ```
+
+## enmbedding batch size
+
+- 8
+  ```txt
+  INFO:src.hipporag.HippoRAG:Evaluation results for QA: {'ExactMatch': 0.3529, 'F1': 0.7025}
+  ```
+- 80
+  ```txt
+  INFO:src.hipporag.HippoRAG:Evaluation results for QA: {'ExactMatch': 0.3529, 'F1': 0.7025}
+  ```
+- 
