@@ -126,7 +126,7 @@ def main():
         embedding_batch_size=8,
         max_new_tokens=None,
         corpus_len=len(corpus),
-        openie_mode=args.openie_mode
+        openie_mode=args.openie_mode,
         passage_node_weight=0.5,
     )
 
