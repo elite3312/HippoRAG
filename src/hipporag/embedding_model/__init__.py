@@ -4,6 +4,8 @@ from .GritLM import GritLMEmbeddingModel
 from .NVEmbedV2 import NVEmbedV2EmbeddingModel
 from .OpenAI import OpenAIEmbeddingModel
 from .BgeSmallEnV15 import BgeSmallEnV15Model
+from .SfrEmbeddingMistral import SfrEmbeddingMistralModel
+
 from ..utils.logging_utils import get_logger
 
 logger = get_logger(__name__)
@@ -17,7 +19,7 @@ def _get_embedding_model_class(embedding_model_name: str = "nvidia/NV-Embed-v2")
         return ContrieverModel
     elif "BAAI/bge-small-en-v1.5" in embedding_model_name:
         return BgeSmallEnV15Model
-    elif "NovaSearch/stella_en_1.5B_v5" in embedding_model_name:
+    elif "Salesforce/SFR-Embedding-Mistral" in embedding_model_name:
         return StellaEn15BV5EmbeddingModel
     elif "text-embedding" in embedding_model_name:
         return OpenAIEmbeddingModel
