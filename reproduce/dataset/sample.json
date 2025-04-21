@@ -145,6 +145,135 @@
         "idx": 9
       }
     ]
-  }
+  },
+  {
+    "id": "itsupport/question_9.json",
+    "question": "What app should I use to configure my email on an Android device?",
+    "answer": [
+      "Email app"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Setting Up a Mobile Device for Company Email",
+        "text": "Use the Email app, add your account, and configure the incoming and outgoing server settings. Contact IT for server details if needed.",
+        "is_supporting": true,
+        "idx": 0
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_10.json",
+    "question": "What app should I restart first to troubleshoot Microsoft Office issues?",
+    "answer": [
+      "Microsoft Office application"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Troubleshooting Issues with Microsoft Office",
+        "text": "Restart the Microsoft Office application experiencing issues. This simple step often resolves temporary glitches.",
+        "is_supporting": true,
+        "idx": 3
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_13.json",
+    "question": "What button should I press to restart my company-issued tablet?",
+    "answer": [
+      "power button"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Troubleshooting Issues with Company-Issued Tablets",
+        "text": "Press and hold the power button to restart the tablet. If the issue persists, perform a factory reset.",
+        "is_supporting": true,
+        "idx": 6
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_14.json",
+    "question": "What FTP client can I use for windows?",
+    "answer": [
+      "WinSCP"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Setting Up a Secure FTP Connection",
+        "text": "Install an FTP client like FileZilla or WinSCP and configure it to use SFTP or FTPS.",
+        "is_supporting": true,
+        "idx": 24
+      }
+    ]
+  },
+  
+  {
+    "id": "itsupport/question_16.json",
+    "question": "What app should I use to set up a conference call?",
+    "answer": [
+      "Webex"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Setting Up a Conference Call on Cisco Webex",
+        "text": "Log in to Webex, schedule a meeting, and send invitations to participants.",
+        "is_supporting": true,
+        "idx": 4
+      }
+    ]
+  },
  
+  {
+    "id": "itsupport/question_18.json",
+    "question": "What option in File Explorer should I use to configure a network drive on Windows?",
+    "answer": [
+      "Map network drive'"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Configuring a Network Drive",
+        "text": "Open File Explorer, click 'Map network drive,' and enter the server address.",
+        "is_supporting": true,
+        "idx": 33
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_19.json",
+    "question": "What encryption is used to set up a secure connection to a database?",
+    "answer": [
+      "SSL/TLS."
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Setting Up a Secure Connection to a Database",
+        "text": "Install the required drivers, configure the connection string, and enable SSL/TLS encryption.",
+        "is_supporting": true,
+        "idx": 35
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_20.json",
+    "question": "How needs to be verified first if I need to troubleshoot issues with Skype for Business?",
+    "answer": [
+      "credentials"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Troubleshooting Issues with Skype for Business",
+        "text": "Verify credentials, restart Skype for Business, and check the network connection.",
+        "is_supporting": true,
+        "idx": 37
+      }
+    ]
+  }
 ]
