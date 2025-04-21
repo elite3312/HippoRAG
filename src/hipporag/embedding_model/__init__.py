@@ -4,7 +4,6 @@ from .GritLM import GritLMEmbeddingModel
 from .NVEmbedV2 import NVEmbedV2EmbeddingModel
 from .OpenAI import OpenAIEmbeddingModel
 from .BgeSmallEnV15 import BgeSmallEnV15Model
-from .AllMiniLML6V2 import AllMiniLML6V2EmbeddingModel
 from ..utils.logging_utils import get_logger
 
 logger = get_logger(__name__)
