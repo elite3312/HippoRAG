@@ -17,8 +17,6 @@ def _get_embedding_model_class(embedding_model_name: str = "nvidia/NV-Embed-v2")
         return ContrieverModel
     elif "BAAI/bge-small-en-v1.5" in embedding_model_name:
         return BgeSmallEnV15Model
-    elif "sentence-transformers/all-MiniLM-L6-v2" in embedding_model_name:
-        return AllMiniLML6V2EmbeddingModel
     elif "text-embedding" in embedding_model_name:
         return OpenAIEmbeddingModel
     assert False, f"Unknown embedding model name: {embedding_model_name}"
