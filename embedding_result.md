@@ -4,6 +4,7 @@
 | nvidia/NV-Embed-v2 | 'ExactMatch': 0.3529, 'F1': 0.7114 |
 | facebook/contriever | 'ExactMatch': 0.2941, 'F1': 0.695 |
 | BAAI/bge-small-en-v1.5 | 'ExactMatch': 0.2941, 'F1': 0.6817 |
+| Salesforce/SFR-Embedding-Mistral | 'ExactMatch': 0.2941, 'F1': 0.6066 |
 
 ```
 (hipporag) carolsong1110@instance-20250416-075442:~/HippoRAG$ python main.py --dataset sample  --llm_base_url https://api.openai.com/v1 --llm_name gpt-4o-mini --embedding_name GritLM/GritLM-7B
@@ -271,4 +272,100 @@ QA Reading:   0%|                                                               
 QA Reading: 100%|████████████████████████████████████████████████████████████████| 17/17 [00:24<00:00,  1.45s/it]
 Extraction Answers from LLM Response: 17it [00:00, 312733.19it/s]
 INFO:src.hipporag.HippoRAG:Evaluation results for QA: {'ExactMatch': 0.3529, 'F1': 0.7114}
+```
+```
+(hipporag) carolsong1110@instance-20250416-075442:~/HippoRAG$ python main.py --dataset sample  --llm_base_url https://api.openai.com/v1 --llm_name gpt-4o-mini --embedding_name Salesforce/SFR-Embedding-Mistral
+INFO:src.hipporag.prompts.prompt_template_manager:Loading templates from directory: /home/carolsong1110/HippoRAG/src/hipporag/prompts/templates
+tokenizer_config.json: 100%|████████████████████████████████████████████████████| 981/981 [00:00<00:00, 7.12MB/s]
+tokenizer.model: 100%|████████████████████████████████████████████████████████| 493k/493k [00:00<00:00, 29.8MB/s]
+tokenizer.json: 100%|███████████████████████████████████████████████████████| 1.80M/1.80M [00:00<00:00, 2.50MB/s]
+special_tokens_map.json: 100%|██████████████████████████████████████████████████| 624/624 [00:00<00:00, 4.84MB/s]
+config.json: 100%|██████████████████████████████████████████████████████████████| 663/663 [00:00<00:00, 4.66MB/s]
+model.safetensors.index.json: 100%|█████████████████████████████████████████| 22.2k/22.2k [00:00<00:00, 98.7MB/s]
+model-00001-of-00003.safetensors: 100%|██████████████████████████████████████| 4.94G/4.94G [00:11<00:00, 417MB/s]
+model-00002-of-00003.safetensors: 100%|██████████████████████████████████████| 5.00G/5.00G [00:12<00:00, 400MB/s]
+model-00003-of-00003.safetensors: 100%|██████████████████████████████████████| 4.28G/4.28G [00:11<00:00, 385MB/s]
+Downloading shards: 100%|██████████████████████████████████████████████████████████| 3/3 [00:36<00:00, 12.04s/it]
+INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading checkpoint shards: 100%|███████████████████████████████████████████████████| 3/3 [00:04<00:00,  1.54s/it]
+INFO:src.hipporag.embedding_store:Creating working directory: outputs/sample/gpt-4o-mini_Salesforce_SFR-Embedding-Mistral/chunk_embeddings
+INFO:src.hipporag.embedding_store:Creating working directory: outputs/sample/gpt-4o-mini_Salesforce_SFR-Embedding-Mistral/entity_embeddings
+INFO:src.hipporag.embedding_store:Creating working directory: outputs/sample/gpt-4o-mini_Salesforce_SFR-Embedding-Mistral/fact_embeddings
+INFO:src.hipporag.prompts.prompt_template_manager:Loading templates from directory: /home/carolsong1110/HippoRAG/src/hipporag/prompts/templates
+INFO:src.hipporag.HippoRAG:Indexing Documents
+INFO:src.hipporag.HippoRAG:Performing OpenIE
+INFO:src.hipporag.embedding_store:Inserting 100 new records, 0 records already exist.
+Batch Encoding:   0%|                                                                    | 0/100 [00:00<?, ?it/s]Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
+Batch Encoding: 104it [00:26,  3.96it/s]                                                                         
+INFO:src.hipporag.embedding_store:Saving new records.
+INFO:src.hipporag.embedding_store:Saved 100 records to outputs/sample/gpt-4o-mini_Salesforce_SFR-Embedding-Mistral/chunk_embeddings/vdb_chunk.parquet
+NER:   0%|                                                                               | 0/100 [00:00<?, ?it/s]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+NER:   1%| | 1/100 [00:03<06:03,  3.67s/it, total_prompt_tokens=679, total_completion_tokens=25, num_cache_hit=0]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+NER:   2%| | 2/100 [00:05<03:54,  2.39s/it, total_prompt_tokens=1361, total_completion_tokens=66, num_cache_hit=0INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+NER: 100%|█| 100/100 [00:23<00:00,  4.18it/s, total_prompt_tokens=69379, total_completion_tokens=5045, num_cache_
+Extracting triples:   0%|                                                                | 0/100 [00:00<?, ?it/s]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+Extracting triples: 100%|█| 100/100 [00:28<00:00,  3.56it/s, total_prompt_tokens=102374, total_completion_tokens=
+INFO:src.hipporag.HippoRAG:OpenIE results saved to outputs/sample/openie_results_ner_gpt-4o-mini.json
+INFO:src.hipporag.HippoRAG:Encoding Entities
+INFO:src.hipporag.embedding_store:Inserting 1260 new records, 0 records already exist.
+Batch Encoding: 1264it [00:11, 109.67it/s]                                                                       
+INFO:src.hipporag.embedding_store:Saving new records.
+INFO:src.hipporag.embedding_store:Saved 1260 records to outputs/sample/gpt-4o-mini_Salesforce_SFR-Embedding-Mistral/entity_embeddings/vdb_entity.parquet
+INFO:src.hipporag.HippoRAG:Encoding Facts
+INFO:src.hipporag.embedding_store:Inserting 1430 new records, 0 records already exist.
+Batch Encoding: 1432it [00:16, 85.44it/s]                                                                        
+INFO:src.hipporag.embedding_store:Saving new records.
+INFO:src.hipporag.embedding_store:Saved 1430 records to outputs/sample/gpt-4o-mini_Salesforce_SFR-Embedding-Mistral/fact_embeddings/vdb_fact.parquet
+INFO:src.hipporag.HippoRAG:Constructing Graph
+INFO:src.hipporag.HippoRAG:Adding OpenIE triples to graph.
+100it [00:00, 16681.13it/s]
+INFO:src.hipporag.HippoRAG:Connecting passage nodes to phrase nodes.
+100it [00:00, 38575.41it/s]
+INFO:src.hipporag.HippoRAG:Found 100 new chunks to save into graph.
+INFO:src.hipporag.HippoRAG:Expanding graph with synonymy edges
+INFO:src.hipporag.HippoRAG:Performing KNN retrieval for each phrase nodes (1260).
+KNN for Queries: 100%|█████████████████████████████████████████████████████████████| 2/2 [00:00<00:00,  3.98it/s]
+100%|█████████████████████████████████████████████████████████████████████| 1260/1260 [00:00<00:00, 40476.26it/s]
+INFO:src.hipporag.HippoRAG:Graph construction completed!
+{'num_phrase_nodes': 1260, 'num_passage_nodes': 100, 'num_total_nodes': 1360, 'num_extracted_triples': 1430, 'num_triples_with_passage_node': 1781, 'num_synonymy_triples': 7355, 'num_total_triples': 10566}
+INFO:src.hipporag.HippoRAG:Writing graph with 1360 nodes, 10566 edges
+INFO:src.hipporag.HippoRAG:Saving graph completed!
+INFO:src.hipporag.HippoRAG:Preparing for fast retrieval.
+INFO:src.hipporag.HippoRAG:Loading keys.
+INFO:src.hipporag.HippoRAG:Loading embeddings.
+INFO:src.hipporag.HippoRAG:Encoding 17 queries for query_to_fact.
+Batch Encoding: 24it [00:00, 84.66it/s]                                                                          
+INFO:src.hipporag.HippoRAG:Encoding 17 queries for query_to_passage.
+Batch Encoding: 24it [00:00, 82.41it/s]                                                                          
+Retrieving:   0%|                                                                         | 0/17 [00:00<?, ?it/s]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+Retrieving: 100%|████████████████████████████████████████████████████████████████| 17/17 [00:20<00:00,  1.19s/it]
+INFO:src.hipporag.HippoRAG:Total Retrieval Time 20.92s
+INFO:src.hipporag.HippoRAG:Total Recognition Memory Time 20.05s
+INFO:src.hipporag.HippoRAG:Total PPR Time 0.15s
+INFO:src.hipporag.HippoRAG:Total Misc Time 0.72s
+WARNING:src.hipporag.evaluation.retrieval_eval:Length of retrieved docs (100) is smaller than largest topk for recall score (200)
+INFO:src.hipporag.HippoRAG:Evaluation results for retrieval: {'Recall@1': 0.0, 'Recall@2': 0.0, 'Recall@5': 0.0, 'Recall@10': 0.0, 'Recall@20': 0.0, 'Recall@30': 0.0, 'Recall@50': 0.0, 'Recall@100': 0.0, 'Recall@150': 0.0, 'Recall@200': 0.0}
+Collecting QA prompts: 100%|███████████████████████████████████████████████████| 17/17 [00:00<00:00, 6458.04it/s]
+QA Reading:   0%|                                                                         | 0/17 [00:00<?, ?it/s]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+QA Reading: 100%|████████████████████████████████████████████████████████████████| 17/17 [00:25<00:00,  1.47s/it]
+Extraction Answers from LLM Response: 17it [00:00, 311367.55it/s]
+INFO:src.hipporag.HippoRAG:Evaluation results for QA: {'ExactMatch': 0.2941, 'F1': 0.6066}
 ```
