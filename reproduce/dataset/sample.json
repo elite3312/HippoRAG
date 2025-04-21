@@ -1,18 +1,150 @@
 [
   {
-    "id": "sample/question_1.json",
-    "question": "Which Stanford University professor works on Alzheimer's?",
+    "id": "itsupport/question_1.json",
+    "question": "To set up my company email on my mobile device, what needs to be installed? in the first step?", 
     "answer": [
-      "Thomas C. Sudhof"
-    ],
-    "answerable": true,
+       "Mobile Device Management Profile"],
+       "answerable": true,
     "paragraphs": [
       {
-        "title": "Thomas C. Sudhof",
-        "text": "Introduction\nThomas Christian Sudhof (German pronunciation: ['to:mas 'zy:t,ho:f] i; born December 22, 1955), ForMemRS, is a German-American biochemist known for his study of synaptic transmission. Currently, he is a professor in the school of medicine in the department of molecular and cellular physiology, and by courtesy in neurology, and in psychiatry and behavioral sciences at Stanford University.",
+        "title": "todo",
+        "text": "**Setting Up a Mobile Device for Company Email**\n\n**Prerequisites:**\n\n* Mobile device with a supported operating system (iOS, Android, or Windows)\n* Company email account credentials\n* Mobile device management (MDM) profile installed (if required by company policy)\n\n**Step 1: Ensure Mobile Device Management (MDM) Profile is Installed (if required)**\n\nIf your company requires MDM for mobile devices, ensure that the profile is installed on your device. This profile will allow your device to connect to the company network and access company email. If you are unsure whether MDM is required, contact your IT department for assistance.\n\n**Step 2: Set Up Email Account on Mobile Device**\n\n1. Go to the Settings app on your mobile device.\n2. Select \"Mail\" or \"Email\" (depending on your device's operating system).\n3. Tap \"Add Account\" or \"Create a new account\".\n4. Select \"Exchange\" or \"Corporate\" as the account type.\n5. Enter your company email address and password.\n6. If prompted, enter the company's email server address (e.g., mail.company.com).\n7. Select the desired synchronization options (e.g., sync email, contacts, calendar).\n\n**Step 3: Configure Email Settings**\n\n1. In the email account settings, select the \"Advanced\" or \"Security\" option.\n2. Ensure that the \"Use SSL/TLS\" or \"Use secure connection\" option is enabled.\n3. Set the authentication method to \"Username and Password\" or \"Domain\\Username\".\n4. If prompted, enter your company's email domain (e.g., company.com).\n\n**Step 4: Verify Email Account**\n\n1. Wait for the email account to synchronize with the company email server.\n2. Send a test email to yourself or a colleague to verify that email is sending and receiving correctly.\n\n**Troubleshooting Tips:**\n\n* If you encounter issues setting up your email account, ensure that your device has a stable internet connection and that your email credentials are correct.\n* If you are unable to connect to the company email server, contact your IT department for assistance.\n* If you experience issues with email synchronization, try restarting your device or checking the email account settings.\n\n**Additional Information:**\n\n* For security reasons, it is recommended to set up a password or PIN lock on your mobile device.\n* Company email policies may require additional security measures, such as encryption or two-factor authentication. Contact your IT department for more information.\n* If you need further assistance or have questions about company email policies, contact your IT department or refer to the company's email policy documentation.",
+    
         "is_supporting": true,
         "idx": 0
       }
     ]
+  },
+  {
+    "id": "itsupport/question_2.json",
+    "question": "I forgot my PIN, and I am trying to reset it. I am on the \"IT Support\" page and I see many buttons under the \"Self-Service\" tab, what button should I click to reset my PIN?",
+    "answer": [
+       "PIN Reset"      ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "todo",
+        "text": "**Resetting a Forgotten PIN**\n\nIf you have forgotten your PIN, you can reset it using the following steps:\n\n**Step 1: Access the PIN Reset Tool**\n\n1. Go to the company's intranet homepage and click on the \"IT Support\" link at the top right corner of the page.\n2. Click on the \"Self-Service\" tab and then select \"PIN Reset\" from the drop-down menu.\n3. You will be redirected to the PIN Reset Tool login page.\n\n**Step 2: Authenticate with Your Credentials**\n\n1. Enter your company username and password in the required fields.\n2. Click the \"Login\" button to authenticate.\n\n**Step 3: Verify Your Identity**\n\n1. You will be prompted to answer your security question. Enter your answer in the required field.\n2. Click the \"Next\" button to proceed.\n\n**Step 4: Reset Your PIN**\n\n1. Enter a new PIN in the required field. The PIN must be at least 8 characters long and contain a mix of uppercase and lowercase letters, numbers, and special characters.\n2. Re-enter your new PIN in the confirmation field to ensure accuracy.\n3. Click the \"Reset PIN\" button to complete the process.\n\n**Step 5: Confirm PIN Reset**\n\n1. You will receive a confirmation message indicating that your PIN has been successfully reset.\n2. Click the \"OK\" button to close the message.\n\n**Important Notes:**\n\n* If you are unable to reset your PIN using the self-service tool, please contact the IT Helpdesk for assistance.\n* It is recommended to keep your PIN confidential and not share it with anyone.\n* You can reset your PIN a maximum of 3 times in a 24-hour period. If you exceed this limit, you will need to contact the IT Helpdesk to reset your PIN.\n\nBy following these steps, you should be able to reset your forgotten PIN and regain access to company systems and applications. If you encounter any issues during the process, please do not hesitate to reach out to the IT Helpdesk for further assistance.",
+    
+        "is_supporting": true,
+        "idx": 0
+      }
+    ]
+  },
+  
+  {
+    "id": "itsupport/question_3.json",
+    "question": "What is the url to access in order to verfiy the VPN connection?",
+    "answer": [
+       "company.com"      ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "todo",
+        "text": "**Configuring VPN Access for Remote Workers**\n\n**Overview**\n\nThis article provides step-by-step instructions for configuring VPN access for remote workers. This allows employees working from home or other remote locations to securely connect to the company network and access company resources.\n\n**Prerequisites**\n\n* The remote worker's device (laptop or desktop) must meet the company's minimum system requirements for VPN connectivity.\n* The remote worker must have a valid company login credentials.\n* The remote worker must have a stable internet connection.\n\n**Step 1: Install the VPN Client**\n\n1. Go to the company's software portal and download the VPN client software.\n2. Run the installer and follow the prompts to install the software.\n3. Once installed, launch the VPN client software.\n\n**Step 2: Configure the VPN Connection**\n\n1. In the VPN client software, click on \"New Connection\" and select \"Company VPN\" as the connection type.\n2. Enter the company's VPN server address: `vpn.company.com`.\n3. Enter your company login credentials (username and password).\n4. Select the \"Save\" button to save the connection settings.\n\n**Step 3: Establish the VPN Connection**\n\n1. Click on the \"Connect\" button to establish the VPN connection.\n2. You may be prompted to authenticate with two-factor authentication (2FA). Follow the prompts to complete 2FA.\n3. Once connected, you will see a confirmation message indicating that you are connected to the company VPN.\n\n**Step 4: Verify VPN Connection**\n\n1. Open a web browser and navigate to `company.com`.\n2. You should be able to access company resources, such as email, intranet, and file shares.\n3. Verify that your device's IP address has changed to a company-assigned IP address.\n\n**Troubleshooting Tips**\n\n* If you encounter issues connecting to the VPN, ensure that your device meets the minimum system requirements and that your internet connection is stable.\n* If you are unable to access company resources, verify that you are connected to the VPN and that your device's IP address has changed to a company-assigned IP address.\n* If you continue to experience issues, contact the IT helpdesk for further assistance.\n\n**Security Reminders**\n\n* Always keep your VPN client software up-to-date.\n* Never share your login credentials with anyone.\n* Avoid using public Wi-Fi or unsecured networks to access company resources via VPN.\n\nBy following these steps, remote workers can securely connect to the company network and access company resources from anywhere. If you have any questions or issues, please contact the IT helpdesk for further assistance.",
+  
+        "is_supporting": true,
+        "idx": 0
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_4.json",
+    "question": "To set up my company email on my mobile device, what needs to be installed in the first step?",
+    "answer": [
+      "Mobile Device Management (MDM) profile"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Setting Up a Mobile Device for Company Email",
+        "text": "Ensure that the Mobile Device Management (MDM) profile is installed on your device. This profile allows your device to connect to the company network and access company email. Contact your IT department if you are unsure whether MDM is required.",
+        "is_supporting": true,
+        "idx": 0
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_5.json",
+    "question": "What button should I click to reset my PIN on the \"Self-Service\" tab?",
+    "answer": [
+      "PIN Reset"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Resetting a Forgotten PIN",
+        "text": "Go to the \"Self-Service\" tab on the IT Support page and select \"PIN Reset\". You will be redirected to the PIN Reset Tool login page to complete the process.",
+        "is_supporting": true,
+        "idx": 1
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_6.json",
+    "question": "What is the URL to verify the VPN connection?",
+    "answer": [
+      "company.com"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Configuring VPN Access for Remote Workers",
+        "text": "To verify the VPN connection, open a web browser and navigate to company.com. Ensure you are connected to the VPN and can access company resources.",
+        "is_supporting": true,
+        "idx": 2
+      }
+    ]
+  },
+
+  {
+    "id": "itsupport/question_5.json",
+    "question": "How can I reset my company-issued tablet to factory settings?",
+    "answer": [
+      "Factory reset"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Troubleshooting Issues with Company-Issued Tablets",
+        "text": "Go to Settings > System > Advanced > Reset Options > Erase all data (factory reset). Ensure all important data is backed up before proceeding.",
+        "is_supporting": true,
+        "idx": 6
+      }
+    ]
+  },
+  {
+    "id": "itsupport/question_6.json",
+    "question": "What is the recommended wireless protocol for a secure network?",
+    "answer": [
+      "WPA2 or WPA3"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Setting Up a Secure Wireless Network",
+        "text": "Use WPA2-PSK (AES) or WPA3-PSK (AES-256) for secure wireless networks. Avoid outdated protocols like WEP or WPA.",
+        "is_supporting": true,
+        "idx": 7
+      }
+    ]
+  },
+  
+  {
+    "id": "itsupport/question_8.json",
+    "question": "Who should I contact if I forget my company email password?",
+    "answer": [
+      "IT helpdesk"
+    ],
+    "answerable": true,
+    "paragraphs": [
+      {
+        "title": "Resetting a Forgotten Password",
+        "text": "Contact the IT helpdesk for assistance in resetting your company email password.",
+        "is_supporting": true,
+        "idx": 9
+      }
+    ]
   }
+ 
 ]
