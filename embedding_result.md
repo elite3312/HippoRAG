@@ -5,7 +5,7 @@
 | facebook/contriever | 'ExactMatch': 0.2941, 'F1': 0.695 |
 | BAAI/bge-small-en-v1.5 | 'ExactMatch': 0.2941, 'F1': 0.6817 |
 | Salesforce/SFR-Embedding-Mistral | 'ExactMatch': 0.2941, 'F1': 0.6066 |
-
+| intfloat/e5-mistral-7b-instruct | 'ExactMatch': 0.2353, 'F1': 0.6018 |
 ```
 (hipporag) carolsong1110@instance-20250416-075442:~/HippoRAG$ python main.py --dataset sample  --llm_base_url https://api.openai.com/v1 --llm_name gpt-4o-mini --embedding_name GritLM/GritLM-7B
 INFO:src.hipporag.prompts.prompt_template_manager:Loading templates from directory: /home/carolsong1110/HippoRAG/src/hipporag/prompts/templates
@@ -368,4 +368,78 @@ QA Reading:   0%|                                                               
 QA Reading: 100%|████████████████████████████████████████████████████████████████| 17/17 [00:25<00:00,  1.47s/it]
 Extraction Answers from LLM Response: 17it [00:00, 311367.55it/s]
 INFO:src.hipporag.HippoRAG:Evaluation results for QA: {'ExactMatch': 0.2941, 'F1': 0.6066}
+```
+
+```
+(hipporag) carolsong1110@instance-20250416-075442:~/HippoRAG$ python main.py --dataset sample  --llm_base_url https://api.openai.com/v1 --llm_name gpt-4o-mini --embedding_name intfloat/e5-mistral-7b-instruct
+INFO:src.hipporag.HippoRAG:Creating working directory: outputs/sample/gpt-4o-mini_intfloat_e5-mistral-7b-instruct
+INFO:src.hipporag.prompts.prompt_template_manager:Loading templates from directory: /home/carolsong1110/HippoRAG/src/hipporag/prompts/templates
+tokenizer_config.json: 100%|████████████████████████████████████████████████████| 981/981 [00:00<00:00, 6.36MB/s]
+tokenizer.model: 100%|████████████████████████████████████████████████████████| 493k/493k [00:00<00:00, 28.3MB/s]
+tokenizer.json: 100%|███████████████████████████████████████████████████████| 1.80M/1.80M [00:00<00:00, 56.0MB/s]
+added_tokens.json: 100%|███████████████████████████████████████████████████████| 42.0/42.0 [00:00<00:00, 286kB/s]
+special_tokens_map.json: 100%|██████████████████████████████████████████████████| 168/168 [00:00<00:00, 1.04MB/s]
+config.json: 100%|██████████████████████████████████████████████████████████████| 629/629 [00:00<00:00, 3.98MB/s]
+model.safetensors.index.json: 100%|█████████████████████████████████████████| 23.3k/23.3k [00:00<00:00, 90.7MB/s]
+model-00001-of-00002.safetensors: 100%|██████████████████████████████████████| 9.94G/9.94G [00:25<00:00, 396MB/s]
+model-00002-of-00002.safetensors: 100%|██████████████████████████████████████| 4.28G/4.28G [00:11<00:00, 383MB/s]
+Downloading shards: 100%|██████████████████████████████████████████████████████████| 2/2 [00:36<00:00, 18.33s/it]
+INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading checkpoint shards: 100%|███████████████████████████████████████████████████| 2/2 [00:04<00:00,  2.23s/it]
+INFO:src.hipporag.embedding_store:Creating working directory: outputs/sample/gpt-4o-mini_intfloat_e5-mistral-7b-instruct/chunk_embeddings
+INFO:src.hipporag.embedding_store:Creating working directory: outputs/sample/gpt-4o-mini_intfloat_e5-mistral-7b-instruct/entity_embeddings
+INFO:src.hipporag.embedding_store:Creating working directory: outputs/sample/gpt-4o-mini_intfloat_e5-mistral-7b-instruct/fact_embeddings
+INFO:src.hipporag.prompts.prompt_template_manager:Loading templates from directory: /home/carolsong1110/HippoRAG/src/hipporag/prompts/templates
+INFO:src.hipporag.HippoRAG:Indexing Documents
+INFO:src.hipporag.HippoRAG:Performing OpenIE
+INFO:src.hipporag.embedding_store:Inserting 100 new records, 0 records already exist.
+Batch Encoding:   0%|                                                                    | 0/100 [00:00<?, ?it/s]Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
+Batch Encoding: 104it [00:26,  3.99it/s]                                                                         
+INFO:src.hipporag.embedding_store:Saving new records.
+INFO:src.hipporag.embedding_store:Saved 100 records to outputs/sample/gpt-4o-mini_intfloat_e5-mistral-7b-instruct/chunk_embeddings/vdb_chunk.parquet
+INFO:src.hipporag.HippoRAG:OpenIE results saved to outputs/sample/openie_results_ner_gpt-4o-mini.json
+INFO:src.hipporag.HippoRAG:Encoding Entities
+INFO:src.hipporag.embedding_store:Inserting 1260 new records, 0 records already exist.
+Batch Encoding: 1264it [00:11, 109.64it/s]                                                                       
+INFO:src.hipporag.embedding_store:Saving new records.
+INFO:src.hipporag.embedding_store:Saved 1260 records to outputs/sample/gpt-4o-mini_intfloat_e5-mistral-7b-instruct/entity_embeddings/vdb_entity.parquet
+INFO:src.hipporag.HippoRAG:Encoding Facts
+INFO:src.hipporag.embedding_store:Inserting 1430 new records, 0 records already exist.
+Batch Encoding: 1432it [00:17, 83.69it/s]                                                                        
+INFO:src.hipporag.embedding_store:Saving new records.
+INFO:src.hipporag.embedding_store:Saved 1430 records to outputs/sample/gpt-4o-mini_intfloat_e5-mistral-7b-instruct/fact_embeddings/vdb_fact.parquet
+INFO:src.hipporag.HippoRAG:Constructing Graph
+INFO:src.hipporag.HippoRAG:Adding OpenIE triples to graph.
+100it [00:00, 16987.87it/s]
+INFO:src.hipporag.HippoRAG:Connecting passage nodes to phrase nodes.
+100it [00:00, 46618.92it/s]
+INFO:src.hipporag.HippoRAG:Found 100 new chunks to save into graph.
+INFO:src.hipporag.HippoRAG:Expanding graph with synonymy edges
+INFO:src.hipporag.HippoRAG:Performing KNN retrieval for each phrase nodes (1260).
+KNN for Queries: 100%|█████████████████████████████████████████████████████████████| 2/2 [00:00<00:00,  4.50it/s]
+100%|█████████████████████████████████████████████████████████████████████| 1260/1260 [00:00<00:00, 68297.90it/s]
+INFO:src.hipporag.HippoRAG:Graph construction completed!
+{'num_phrase_nodes': 1260, 'num_passage_nodes': 100, 'num_total_nodes': 1360, 'num_extracted_triples': 1430, 'num_triples_with_passage_node': 1781, 'num_synonymy_triples': 8238, 'num_total_triples': 11449}
+INFO:src.hipporag.HippoRAG:Writing graph with 1360 nodes, 11449 edges
+INFO:src.hipporag.HippoRAG:Saving graph completed!
+INFO:src.hipporag.HippoRAG:Preparing for fast retrieval.
+INFO:src.hipporag.HippoRAG:Loading keys.
+INFO:src.hipporag.HippoRAG:Loading embeddings.
+INFO:src.hipporag.HippoRAG:Encoding 17 queries for query_to_fact.
+Batch Encoding: 24it [00:00, 82.48it/s]                                                                          
+INFO:src.hipporag.HippoRAG:Encoding 17 queries for query_to_passage.
+Batch Encoding: 24it [00:00, 82.89it/s]                                                                          
+Retrieving:   0%|                                                                         | 0/17 [00:00<?, ?it/s]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+Retrieving: 100%|████████████████████████████████████████████████████████████████| 17/17 [00:17<00:00,  1.05s/it]
+INFO:src.hipporag.HippoRAG:Total Retrieval Time 18.46s
+INFO:src.hipporag.HippoRAG:Total Recognition Memory Time 17.69s
+INFO:src.hipporag.HippoRAG:Total PPR Time 0.04s
+INFO:src.hipporag.HippoRAG:Total Misc Time 0.73s
+WARNING:src.hipporag.evaluation.retrieval_eval:Length of retrieved docs (100) is smaller than largest topk for recall score (200)
+INFO:src.hipporag.HippoRAG:Evaluation results for retrieval: {'Recall@1': 0.0, 'Recall@2': 0.0, 'Recall@5': 0.0, 'Recall@10': 0.0, 'Recall@20': 0.0, 'Recall@30': 0.0, 'Recall@50': 0.0, 'Recall@100': 0.0, 'Recall@150': 0.0, 'Recall@200': 0.0}
+Collecting QA prompts: 100%|███████████████████████████████████████████████████| 17/17 [00:00<00:00, 2632.86it/s]
+QA Reading:   0%|                                                                         | 0/17 [00:00<?, ?it/s]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+QA Reading: 100%|████████████████████████████████████████████████████████████████| 17/17 [00:23<00:00,  1.39s/it]
+Extraction Answers from LLM Response: 17it [00:00, 347820.33it/s]
+INFO:src.hipporag.HippoRAG:Evaluation results for QA: {'ExactMatch': 0.2353, 'F1': 0.6018}
 ```
