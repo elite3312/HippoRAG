@@ -1,3 +1,10 @@
+| embedding model | results |
+| GritLM/GritLM-7B | 'ExactMatch': 0.4118, 'F1': 0.7379 |
+| nvidia/NV-Embed-v2 | 'ExactMatch': 0.3529, 'F1': 0.7114 |
+| facebook/contriever | 'ExactMatch': 0.2941, 'F1': 0.695 |
+| BAAI/bge-small-en-v1.5 | 'ExactMatch': 0.2941, 'F1': 0.6817 |
+
+```
 (hipporag) carolsong1110@instance-20250416-075442:~/HippoRAG$ python main.py --dataset sample  --llm_base_url https://api.openai.com/v1 --llm_name gpt-4o-mini --embedding_name GritLM/GritLM-7B
 INFO:src.hipporag.prompts.prompt_template_manager:Loading templates from directory: /home/carolsong1110/HippoRAG/src/hipporag/prompts/templates
 INFO:src.hipporag.HippoRAG:Loaded graph from outputs/sample/gpt-4o-mini_GritLM_GritLM-7B/graph.pickle with 250 nodes, 1220 edges
@@ -64,8 +71,9 @@ QA Reading:  94%|█████████████████████
 QA Reading: 100%|████████████████████████████████████████████████████████████████| 17/17 [00:29<00:00,  1.71s/it]
 Extraction Answers from LLM Response: 17it [00:00, 339538.90it/s]
 INFO:src.hipporag.HippoRAG:Evaluation results for QA: {'ExactMatch': 0.4118, 'F1': 0.7379}
+```
 
-
+```
 (hipporag) carolsong1110@instance-20250416-075442:~/HippoRAG$ python main.py --dataset sample  --llm_base_url https://api.openai.com/v1 --llm_name gpt-4o-mini --embedding_name facebook/contriever
 INFO:src.hipporag.prompts.prompt_template_manager:Loading templates from directory: /home/carolsong1110/HippoRAG/src/hipporag/prompts/templates
 INFO:src.hipporag.HippoRAG:Loaded graph from outputs/sample/gpt-4o-mini_facebook_contriever/graph.pickle with 37 nodes, 110 edges
@@ -113,7 +121,6 @@ Batch Encoding: 24it [00:00, 523.58it/s]
 INFO:src.hipporag.HippoRAG:Encoding 17 queries for query_to_passage.
 Batch Encoding: 24it [00:00, 834.77it/s]                                                                         
 Retrieving:   0%|                                                                         | 0/17 [00:00<?, ?it/s]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-Retrieving:  94%|████████████████████████████████████████████████████████████▏   | 16/17 [00:23<00:01,  1.24s/it]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 Retrieving: 100%|████████████████████████████████████████████████████████████████| 17/17 [00:24<00:00,  1.46s/it]
 INFO:src.hipporag.HippoRAG:Total Retrieval Time 24.92s
 INFO:src.hipporag.HippoRAG:Total Recognition Memory Time 24.49s
@@ -128,8 +135,9 @@ QA Reading:  94%|█████████████████████
 QA Reading: 100%|████████████████████████████████████████████████████████████████| 17/17 [00:26<00:00,  1.58s/it]
 Extraction Answers from LLM Response: 17it [00:00, 286358.10it/s]
 INFO:src.hipporag.HippoRAG:Evaluation results for QA: {'ExactMatch': 0.2941, 'F1': 0.695}
+```
 
-
+```
 (hipporag) carolsong1110@instance-20250416-075442:~/HippoRAG$ python main.py --dataset sample  --llm_base_url https://api.openai.com/v1 --llm_name gpt-4o-mini --embedding_name BAAI/bge-small-en-v1.5
 INFO:src.hipporag.prompts.prompt_template_manager:Loading templates from directory: /home/carolsong1110/HippoRAG/src/hipporag/prompts/templates
 INFO:src.hipporag.HippoRAG:Loaded graph from outputs/sample/gpt-4o-mini_BAAI_bge-small-en-v1.5/graph.pickle with 37 nodes, 110 edges
@@ -177,22 +185,6 @@ Batch Encoding: 24it [00:00, 724.98it/s]
 INFO:src.hipporag.HippoRAG:Encoding 17 queries for query_to_passage.
 Batch Encoding: 24it [00:00, 882.39it/s]                                                                         
 Retrieving:   0%|                                                                         | 0/17 [00:00<?, ?it/s]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-Retrieving:   6%|███▊                                                             | 1/17 [00:02<00:33,  2.12s/it]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-Retrieving:  12%|███████▋                                                         | 2/17 [00:03<00:26,  1.79s/it]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-Retrieving:  18%|███████████▍                                                     | 3/17 [00:04<00:21,  1.57s/it]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-Retrieving:  24%|███████████████▎                                                 | 4/17 [00:06<00:20,  1.57s/it]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-Retrieving:  29%|███████████████████                                              | 5/17 [00:08<00:21,  1.77s/it]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-Retrieving:  35%|██████████████████████▉                                          | 6/17 [00:10<00:18,  1.67s/it]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-Retrieving:  41%|██████████████████████████▊                                      | 7/17 [00:11<00:15,  1.57s/it]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-Retrieving:  47%|██████████████████████████████▌                                  | 8/17 [00:12<00:13,  1.51s/it]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-Retrieving:  53%|██████████████████████████████████▍                              | 9/17 [00:13<00:10,  1.36s/it]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-Retrieving:  59%|█████████████████████████████████████▋                          | 10/17 [00:15<00:09,  1.38s/it]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-Retrieving:  65%|█████████████████████████████████████████▍                      | 11/17 [00:16<00:08,  1.41s/it]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-Retrieving:  71%|█████████████████████████████████████████████▏                  | 12/17 [00:18<00:06,  1.40s/it]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:src.hipporag.HippoRAG:No facts found after reranking, return DPR results
-Retrieving:  76%|████████████████████████████████████████████████▉               | 13/17 [00:19<00:04,  1.22s/it]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-Retrieving:  82%|████████████████████████████████████████████████████▋           | 14/17 [00:20<00:03,  1.33s/it]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-Retrieving:  88%|████████████████████████████████████████████████████████▍       | 15/17 [00:21<00:02,  1.25s/it]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 Retrieving:  94%|████████████████████████████████████████████████████████████▏   | 16/17 [00:22<00:01,  1.27s/it]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 Retrieving: 100%|████████████████████████████████████████████████████████████████| 17/17 [00:24<00:00,  1.44s/it]
 INFO:src.hipporag.HippoRAG:Total Retrieval Time 24.49s
@@ -208,8 +200,9 @@ QA Reading:  94%|█████████████████████
 QA Reading: 100%|████████████████████████████████████████████████████████████████| 17/17 [00:30<00:00,  1.80s/it]
 Extraction Answers from LLM Response: 17it [00:00, 241705.65it/s]
 INFO:src.hipporag.HippoRAG:Evaluation results for QA: {'ExactMatch': 0.2941, 'F1': 0.6817}
+```
 
-
+```
 (hipporag) carolsong1110@instance-20250416-075442:~/HippoRAG$ python main.py --dataset sample  --llm_base_url https://api.openai.com/v1 --llm_name gpt-4o-mini --embedding_name nvidia/NV-Embed-v2
 INFO:src.hipporag.prompts.prompt_template_manager:Loading templates from directory: /home/carolsong1110/HippoRAG/src/hipporag/prompts/templates
 INFO:src.hipporag.HippoRAG:Loaded graph from outputs/sample/gpt-4o-mini_nvidia_NV-Embed-v2/graph.pickle with 37 nodes, 118 edges
@@ -277,4 +270,4 @@ QA Reading:   0%|                                                               
 QA Reading: 100%|████████████████████████████████████████████████████████████████| 17/17 [00:24<00:00,  1.45s/it]
 Extraction Answers from LLM Response: 17it [00:00, 312733.19it/s]
 INFO:src.hipporag.HippoRAG:Evaluation results for QA: {'ExactMatch': 0.3529, 'F1': 0.7114}
-
+```
