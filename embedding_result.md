@@ -1,4 +1,5 @@
-| embedding model | results |
+| embedding model name | 结果 |
+| ---- | ---- |
 | GritLM/GritLM-7B | 'ExactMatch': 0.4118, 'F1': 0.7379 |
 | nvidia/NV-Embed-v2 | 'ExactMatch': 0.3529, 'F1': 0.7114 |
 | facebook/contriever | 'ExactMatch': 0.2941, 'F1': 0.695 |
