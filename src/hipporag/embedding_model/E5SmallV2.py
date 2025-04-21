@@ -5,7 +5,7 @@ import numpy as np
 import torch
 from tqdm import tqdm
 from transformers import AutoModel, AutoTokenizer
-
+from sentence_transformers import SentenceTransformer
 from ..utils.config_utils import BaseConfig
 from ..utils.logging_utils import get_logger
 from .base import BaseEmbeddingModel, EmbeddingConfig
@@ -13,13 +13,13 @@ from .base import BaseEmbeddingModel, EmbeddingConfig
 logger = get_logger(__name__)
 
 
-def mean_pooling(model_output, attention_mask):
-    token_embeddings = model_output[0]
+def mean_pooling(token_embeddings, attention_mask):
     input_mask_expanded = attention_mask.unsqueeze(-1).expand(token_embeddings.size()).float()
     return torch.sum(token_embeddings * input_mask_expanded, 1) / torch.clamp(input_mask_expanded.sum(1), min=1e-9)
 
 
-class AllMiniLML6V2EmbeddingModel(BaseEmbeddingModel):
+class E5SmallV2EmbeddingModel(BaseEmbeddingModel):
+
     def __init__(self, global_config: Optional[BaseConfig] = None, embedding_model_name: Optional[str] = None) -> None:
         super().__init__(global_config=global_config)
 
@@ -39,6 +39,13 @@ class AllMiniLML6V2EmbeddingModel(BaseEmbeddingModel):
         self.embedding_dim = self.embedding_model.config.hidden_size
 
     def _init_embedding_config(self) -> None:
+        """
+        Extract embedding model-specific parameters to init the EmbeddingConfig.
+
+        Returns:
+            None
+        """
+
         config_dict = {
             "embedding_model_name": self.embedding_model_name,
             "norm": self.global_config.embedding_return_as_normalized,
@@ -61,11 +68,10 @@ class AllMiniLML6V2EmbeddingModel(BaseEmbeddingModel):
 
     def encode(self, texts: List[str]):
         with torch.no_grad():
-            encoded_input = self.tokenizer(texts, padding=True, truncation=True, return_tensors='pt').to(
+            inputs = self.tokenizer(texts, padding=True, truncation=True, return_tensors='pt').to(
                 self.embedding_model.device)
-            model_output = self.embedding_model(**encoded_input)
-            embeddings = mean_pooling(model_output, encoded_input['attention_mask'])
-            embeddings = torch.nn.functional.normalize(embeddings, p=2, dim=1)
+            outputs = self.embedding_model(**inputs)
+            embeddings = mean_pooling(outputs[0], inputs['attention_mask'])
 
         return embeddings
 

@@ -4,7 +4,7 @@ from .GritLM import GritLMEmbeddingModel
 from .NVEmbedV2 import NVEmbedV2EmbeddingModel
 from .OpenAI import OpenAIEmbeddingModel
 from .BgeSmallEnV15 import BgeSmallEnV15Model
-from .AllMiniLML6V2 import AllMiniLML6V2EmbeddingModel
+from .JinaEmbeddingsV2SmallEn import JinaEmbeddingsV2SmallEnModel
 from ..utils.logging_utils import get_logger
 
 logger = get_logger(__name__)
@@ -18,8 +18,8 @@ def _get_embedding_model_class(embedding_model_name: str = "nvidia/NV-Embed-v2")
         return ContrieverModel
     elif "BAAI/bge-small-en-v1.5" in embedding_model_name:
         return BgeSmallEnV15Model
-    elif "sentence-transformers/all-MiniLM-L6-v2" in embedding_model_name:
-        return AllMiniLML6V2EmbeddingModel
+    elif "jinaai/jina-embeddings-v2-small-en" in embedding_model_name:
+        return JinaEmbeddingsV2SmallEnModel
     elif "text-embedding" in embedding_model_name:
         return OpenAIEmbeddingModel
     assert False, f"Unknown embedding model name: {embedding_model_name}"
