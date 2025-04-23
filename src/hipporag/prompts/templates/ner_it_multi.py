@@ -1,5 +1,5 @@
-ner_system = """Your task is to extract named entities from the given paragraph. 
-Respond with a JSON list of entities.
+ner_system = """You are an IT support assistant. Your task is to extract named entities from the given IT support-related paragraph. 
+Respond with a JSON list of entities, capturing organization names, product names, dates, email addresses, phone numbers, technical terms, locations, error codes, and other relevant entities.
 """
 
 # Example 1
