@@ -223,6 +223,11 @@ class BaseConfig:
         metadata={"help": "Length of the corpus to use."}
     )
     
+    ner_setting: Optional[Literal['ner', 'nonLlm', 'ner_it', 'ner_it_multi']] = field(
+        default='ner',
+        metadata={"help": "ner template"}
+    )
+    
     
     def __post_init__(self):
         if self.save_dir is None: # If save_dir not given
