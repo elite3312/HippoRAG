@@ -66,157 +66,124 @@ Paragraph:
 {named_entity_json}
 """
 
-# ----------- EXAMPLE 1 -----------
-it_paragraph_1 = """Acme Corp IT Helpdesk provides 24/7 technical support for all employees.
-The team uses ServiceNow for ticket management and supports Windows 11, macOS Ventura, and Ubuntu 22.04 devices.
-In January 2024, the helpdesk upgraded its remote assistance tool to TeamViewer."""
+it_paragraph_a = """To set up company email on your mobile device, ensure that the Mobile Device Management (MDM) profile is installed. 
+This profile allows your device to connect to the company network and access company email. 
+Contact your IT department if you are unsure whether MDM is required."""
 
-it_entities_1 = """{"named_entities": [
-    "Acme Corp", "IT Helpdesk", "ServiceNow", "Windows 11", "macOS Ventura", "Ubuntu 22.04",
-    "January 2024", "TeamViewer"
+it_entities_a = """{"named_entities": [
+    "Mobile Device Management (MDM) profile", "company network", "company email", "IT department"
 ]}"""
 
-ner_conditioned_re_input_1 = ner_conditioned_re_frame.format(
-    passage=it_paragraph_1,
-    named_entity_json=it_entities_1
+ner_conditioned_re_input_a = ner_conditioned_re_frame.format(
+    passage=it_paragraph_a,
+    named_entity_json=it_entities_a
 )
 
-ner_conditioned_re_output_1 = """{"triples": [
-    ["Acme Corp", "has", "IT Helpdesk"],
-    ["IT Helpdesk", "provides", "technical support"],
-    ["IT Helpdesk", "uses", "ServiceNow"],
-    ["IT Helpdesk", "supports", "Windows 11"],
-    ["IT Helpdesk", "supports", "macOS Ventura"],
-    ["IT Helpdesk", "supports", "Ubuntu 22.04"],
-    ["IT Helpdesk", "upgraded tool to", "TeamViewer"],
-    ["TeamViewer", "was upgraded in", "January 2024"]
+ner_conditioned_re_output_a = """{"triples": [
+    ["Mobile Device Management (MDM) profile", "must be installed for", "company email"],
+    ["Mobile Device Management (MDM) profile", "enables connection to", "company network"],
+    ["User", "should contact", "IT department"]
 ]}
 """
 
-# ----------- EXAMPLE 2 -----------
-it_paragraph_2 = """GlobalTech Solutions migrated its cloud infrastructure to Microsoft Azure in March 2023.
-Critical databases were transferred to SQL Server 2022.
-Okta and Duo Security are used for authentication."""
+it_paragraph_b = """If you forgot your PIN, go to the IT Support page, click the Self-Service tab, and select 'PIN Reset.' 
+You will be redirected to the PIN Reset Tool login page. 
+Authenticate with your credentials and answer your security question to reset your PIN."""
 
-it_entities_2 = """{"named_entities": [
-    "GlobalTech Solutions", "Microsoft Azure", "March 2023", "SQL Server 2022",
-    "Okta", "Duo Security"
+it_entities_b = """{"named_entities": [
+    "IT Support page", "Self-Service tab", "PIN Reset", "PIN Reset Tool", "credentials", "security question"
 ]}"""
 
-ner_conditioned_re_input_2 = ner_conditioned_re_frame.format(
-    passage=it_paragraph_2,
-    named_entity_json=it_entities_2
+ner_conditioned_re_input_b = ner_conditioned_re_frame.format(
+    passage=it_paragraph_b,
+    named_entity_json=it_entities_b
 )
 
-ner_conditioned_re_output_2 = """{"triples": [
-    ["GlobalTech Solutions", "migrated to", "Microsoft Azure"],
-    ["GlobalTech Solutions", "migrated in", "March 2023"],
-    ["Critical databases", "transferred to", "SQL Server 2022"],
-    ["GlobalTech Solutions", "uses", "Okta"],
-    ["GlobalTech Solutions", "uses", "Duo Security"]
+ner_conditioned_re_output_b = """{"triples": [
+    ["User", "navigates to", "IT Support page"],
+    ["User", "selects", "Self-Service tab"],
+    ["User", "clicks", "PIN Reset"],
+    ["User", "uses", "PIN Reset Tool"],
+    ["User", "authenticates with", "credentials"],
+    ["User", "answers", "security question"],
+    ["User", "resets", "PIN"]
 ]}
 """
 
-# ----------- EXAMPLE 3 -----------
-it_paragraph_3 = """On April 20, 2025, John Doe from the Sales department was unable to log in to the company portal at portal.megacorp.com.
-He received a '403 Forbidden' error while using Google Chrome on Windows 10.
-The issue was escalated to IT support via ticket #15432 on Jira."""
+it_paragraph_c = """To verify your VPN connection, open a web browser and navigate to company.com. 
+Ensure you are connected to the VPN and can access company resources."""
 
-it_entities_3 = """{"named_entities": [
-    "April 20, 2025", "John Doe", "Sales department", "company portal", "portal.megacorp.com",
-    "403 Forbidden", "Google Chrome", "Windows 10", "IT support", "ticket #15432", "Jira"
+it_entities_c = """{"named_entities": [
+    "VPN connection", "web browser", "company.com", "company resources"
 ]}"""
 
-ner_conditioned_re_input_3 = ner_conditioned_re_frame.format(
-    passage=it_paragraph_3,
-    named_entity_json=it_entities_3
+ner_conditioned_re_input_c = ner_conditioned_re_frame.format(
+    passage=it_paragraph_c,
+    named_entity_json=it_entities_c
 )
 
-ner_conditioned_re_output_3 = """{"triples": [
-    ["John Doe", "belongs to", "Sales department"],
-    ["John Doe", "could not log in to", "company portal"],
-    ["company portal", "URL", "portal.megacorp.com"],
-    ["John Doe", "received error", "403 Forbidden"],
-    ["John Doe", "used", "Google Chrome"],
-    ["John Doe", "used", "Windows 10"],
-    ["Issue", "escalated to", "IT support"],
-    ["Issue", "tracked by", "ticket #15432"],
-    ["ticket #15432", "logged on", "Jira"],
-    ["Issue", "occurred on", "April 20, 2025"]
+ner_conditioned_re_output_c = """{"triples": [
+    ["User", "opens", "web browser"],
+    ["User", "navigates to", "company.com"],
+    ["User", "verifies", "VPN connection"],
+    ["VPN connection", "enables access to", "company resources"]
 ]}
 """
 
-# ----------- EXAMPLE 4 -----------
-it_paragraph_4 = """On May 2, 2024, Sarah Lee from the Engineering department experienced issues connecting to the corporate VPN via Cisco AnyConnect on her MacBook Pro running macOS Sonoma.
-She reported error code 'Login Failed' and contacted the Network Operations Center (NOC) at 09:35 AM.
-The case was tracked as incident #2024-509 in ServiceNow."""
+it_paragraph_d = """To factory reset your company-issued tablet, go to Settings > System > Advanced > Reset Options > Erase all data (factory reset). 
+Ensure all important data is backed up before proceeding."""
 
-it_entities_4 = """{"named_entities": [
-    "May 2, 2024", "Sarah Lee", "Engineering department", "corporate VPN", "Cisco AnyConnect",
-    "MacBook Pro", "macOS Sonoma", "Login Failed", "Network Operations Center", "NOC",
-    "09:35 AM", "incident #2024-509", "ServiceNow"
+it_entities_d = """{"named_entities": [
+    "company-issued tablet", "Settings", "System", "Advanced", "Reset Options", "Erase all data (factory reset)", "important data"
 ]}"""
 
-ner_conditioned_re_input_4 = ner_conditioned_re_frame.format(
-    passage=it_paragraph_4,
-    named_entity_json=it_entities_4
+ner_conditioned_re_input_d = ner_conditioned_re_frame.format(
+    passage=it_paragraph_d,
+    named_entity_json=it_entities_d
 )
 
-ner_conditioned_re_output_4 = """{"triples": [
-    ["Sarah Lee", "belongs to", "Engineering department"],
-    ["Sarah Lee", "used", "MacBook Pro"],
-    ["MacBook Pro", "runs", "macOS Sonoma"],
-    ["Sarah Lee", "attempted connection to", "corporate VPN"],
-    ["corporate VPN", "accessed via", "Cisco AnyConnect"],
-    ["Sarah Lee", "received error", "Login Failed"],
-    ["Sarah Lee", "reported issue to", "Network Operations Center"],
-    ["Network Operations Center", "also called", "NOC"],
-    ["Issue", "reported at", "09:35 AM"],
-    ["Issue", "occurred on", "May 2, 2024"],
-    ["Issue", "tracked as", "incident #2024-509"],
-    ["incident #2024-509", "logged in", "ServiceNow"]
+ner_conditioned_re_output_d = """{"triples": [
+    ["User", "navigates to", "Settings"],
+    ["User", "selects", "System"],
+    ["User", "chooses", "Advanced"],
+    ["User", "opens", "Reset Options"],
+    ["User", "executes", "Erase all data (factory reset)"],
+    ["User", "backs up", "important data"]
 ]}
 """
 
-# ----------- EXAMPLE 5 -----------
-it_paragraph_5 = """In June 2023, the Information Security team detected a phishing email targeting Finance department users at DataVantage Inc.
-The malicious email contained a fake Microsoft 365 login page.
-The team initiated a password reset for affected accounts using the Okta dashboard and notified users via helpdesk@datavantage.com."""
+it_paragraph_e = """For a secure wireless network, use WPA2-PSK (AES) or WPA3-PSK (AES-256) as the wireless protocol. 
+Avoid outdated protocols like WEP or WPA."""
 
-it_entities_5 = """{"named_entities": [
-    "June 2023", "Information Security team", "phishing email", "Finance department", "DataVantage Inc",
-    "Microsoft 365", "Okta", "helpdesk@datavantage.com"
+it_entities_e = """{"named_entities": [
+    "WPA2-PSK (AES)", "WPA3-PSK (AES-256)", "wireless protocol", "WEP", "WPA", "wireless network"
 ]}"""
 
-ner_conditioned_re_input_5 = ner_conditioned_re_frame.format(
-    passage=it_paragraph_5,
-    named_entity_json=it_entities_5
+ner_conditioned_re_input_e = ner_conditioned_re_frame.format(
+    passage=it_paragraph_e,
+    named_entity_json=it_entities_e
 )
 
-ner_conditioned_re_output_5 = """{"triples": [
-    ["Information Security team", "detected", "phishing email"],
-    ["phishing email", "targeted", "Finance department"],
-    ["Finance department", "is part of", "DataVantage Inc"],
-    ["phishing email", "contained", "fake Microsoft 365 login page"],
-    ["Information Security team", "initiated password reset via", "Okta"],
-    ["Information Security team", "notified users via", "helpdesk@datavantage.com"],
-    ["Incident", "occurred in", "June 2023"]
+ner_conditioned_re_output_e = """{"triples": [
+    ["wireless network", "should use", "WPA2-PSK (AES)"],
+    ["wireless network", "should use", "WPA3-PSK (AES-256)"],
+    ["wireless network", "should avoid", "WEP"],
+    ["wireless network", "should avoid", "WPA"]
 ]}
 """
 
-# --------- (Append these to your prompt_template) ---------
 prompt_template = [
     {"role": "system", "content": ner_conditioned_re_system},
-    {"role": "user", "content": ner_conditioned_re_input_1},
-    {"role": "assistant", "content": ner_conditioned_re_output_1},
-    {"role": "user", "content": ner_conditioned_re_input_2},
-    {"role": "assistant", "content": ner_conditioned_re_output_2},
-    {"role": "user", "content": ner_conditioned_re_input_3},
-    {"role": "assistant", "content": ner_conditioned_re_output_3},
-    {"role": "user", "content": ner_conditioned_re_input_4},
-    {"role": "assistant", "content": ner_conditioned_re_output_4},
-    {"role": "user", "content": ner_conditioned_re_input_5},
-    {"role": "assistant", "content": ner_conditioned_re_output_5},
+    {"role": "user", "content": ner_conditioned_re_input_a},
+    {"role": "assistant", "content": ner_conditioned_re_output_a},
+    {"role": "user", "content": ner_conditioned_re_input_b},
+    {"role": "assistant", "content": ner_conditioned_re_output_b},
+    {"role": "user", "content": ner_conditioned_re_input_c},
+    {"role": "assistant", "content": ner_conditioned_re_output_c},
+    {"role": "user", "content": ner_conditioned_re_input_d},
+    {"role": "assistant", "content": ner_conditioned_re_output_d},
+    {"role": "user", "content": ner_conditioned_re_input_e},
+    {"role": "assistant", "content": ner_conditioned_re_output_e},
     {"role": "user", "content": convert_format_to_template(
         original_string=ner_conditioned_re_frame,
         placeholder_mapping=None,
