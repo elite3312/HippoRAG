@@ -1,5 +1,11 @@
 # hipporag
 
+
+## compute environment
+
+- gcp image:c0-deeplearning-common-cu124-v20250310-debian-11-py310
+  - Google, Deep Learning VM with CUDA 12.4, M128, Debian 11, Python 3.10. With CUDA 12.4 preinstalled.
+  
 ## install
 
 ```sh
@@ -33,8 +39,10 @@ watch nvidia-smi
   ```
 ### exp1-tuning config
 
+- change parameters in main.py
+
 ```sh
-python main.py --dataset itsupport
+python main.py --dataset itsupport 
 ```
 
 ### exp2-change embedding models
