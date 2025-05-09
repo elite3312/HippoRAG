@@ -34,14 +34,16 @@ def _extract_ner_from_response(real_response):
 
 
 class OpenIE:
-    def __init__(self, llm_model: CacheOpenAI):
+    def __init__(self, llm_model: CacheOpenAI, ner_setting: str):
         # Init prompt template manager
         self.prompt_template_manager = PromptTemplateManager(role_mapping={"system": "system", "user": "user", "assistant": "assistant"})
         self.llm_model = llm_model
+        self.ner_setting = ner_setting
 
     def ner(self, chunk_key: str, passage: str) -> NerRawOutput:
+        
         # PREPROCESSING
-        ner_input_message = self.prompt_template_manager.render(name='ner', passage=passage)
+        ner_input_message = self.prompt_template_manager.render(name=self.ner_setting, passage=passage)
         raw_response = ""
         metadata = {}
         try:
